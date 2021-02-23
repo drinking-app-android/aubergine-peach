@@ -7,15 +7,15 @@
     android:background="@drawable/alchol"
     android:outlineAmbientShadowColor="#FFFFFF"
     android:outlineSpotShadowColor="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/randomizeButton"
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginTop="323dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#80F86E8E"
         android:text="Randomize"
         android:textColor="#FFFFFF"
@@ -36,7 +36,8 @@
         android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/randomizeButton"
+        android:layout_marginLeft="104dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
