@@ -7,4 +7,5 @@ import retrofit2.http.GET
 interface RandomDrinkAPI {
     @get:GET("random.php")
     val drinks: Call<Drink>
+
 }

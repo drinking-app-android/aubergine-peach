@@ -22,7 +22,7 @@
                 android:id="@+id/text_view_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
