@@ -40,7 +40,7 @@ class RandomizeActivity : AppCompatActivity() {
                 for (drinkProperty in drink) {
                     var content = ""
                     content += """
-                        Drink ${drinkProperty.strDrink.toString()}
+                        Drink ${drinkProperty.strDrink}
                         
                         """.trimIndent()
                     content += """

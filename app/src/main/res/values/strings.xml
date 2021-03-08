@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Drinkify</string>
+    <string name="search_hint">Search drinks</string>
 </resources>

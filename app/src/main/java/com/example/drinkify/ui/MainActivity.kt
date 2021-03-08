@@ -1,5 +1,6 @@
 package com.example.drinkify.ui
 
+import android.app.SearchManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,5 +22,14 @@ class MainActivity : AppCompatActivity() {
          val intent = Intent(this, GenerateActivity::class.java)
             startActivity(intent)
         }
+
+        val searchButton: Button = findViewById(R.id.searchButton)
+        searchButton.setOnClickListener{
+            onSearchRequested()
+
+        }
+
     }
+
+
 }

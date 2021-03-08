@@ -9,7 +9,8 @@
     android:outlineSpotShadowColor="#FFFFFF"
     tools:context=".ui.MainActivity">
 
-    <Button
+
+ <Button
         android:id="@+id/randomizeButton"
         android:layout_width="200dp"
         android:layout_height="75dp"
@@ -29,6 +30,7 @@
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="#80F86E8E"
         android:text="Generate"
@@ -36,16 +38,17 @@
         android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/randomizeButton"
-        android:layout_marginLeft="104dp" />
+        app:layout_constraintTop_toBottomOf="@+id/randomizeButton" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="349dp"
         android:layout_height="161dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="#E91E63"
+        android:editable="false"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:inputType="textPersonName"
@@ -58,6 +61,18 @@
         android:textColorHighlight="#3BFF0057"
         android:textSize="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="24dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/searchButton"
+
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="#80F86E8E"
+        app:icon="@android:drawable/ic_menu_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
