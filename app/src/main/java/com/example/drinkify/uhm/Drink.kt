@@ -1,20 +1,42 @@
-package com.example.drinkify.uhm;
+package com.example.drinkify.uhm
 
 import com.google.gson.annotations.SerializedName
 
 class Drink {
-    //@SerializedName("strDrink")
+    val idDrink = 0
+
     val strDrink: String? = null
 
-    //@SerializedName("strCategory")
+    val strDrinkAlternate: String? = null
+
+    val strTags: String? = null
+
+    val strVideo: String? = null
+
     val strCategory: String? = null
 
-    //@SerializedName("strAlcoholic")
+    val strIBA: String? = null
+
     val strAlcoholic: String? = null
 
-    //@SerializedName("strInstructions")
     val strInstructions: String? = null
-/*
+
+    val strInstructionsES: String? = null
+
+    val strInstructionsDE: String? = null
+
+    val strInstructionsFR: String? = null
+
+    val strInstructionsIT: String? = null
+
+    @SerializedName("strInstructionsZH-HANS")
+    val strInstructionsZHHANS: String? = null
+
+    @SerializedName("strInstructionsZH-HANT")
+    val strInstructionsZHHANT: String? = null
+
+    val strGlass: String? = null
+
     val strDrinkThumb: String? = null
     val strIngredient1: String? = null
     val strIngredient2: String? = null
@@ -47,8 +69,62 @@ class Drink {
     val strMeasure14: String? = null
     val strMeasure15: String? = null
 
-    @SerializedName("body")
-    val text: String? = null
-*/
+    val strImageSource: String? = null
+    val strImageAttribution: String? = null
+    val strCreativeCommonsConfirmed: String? = null
+    val dateModified: String? = null
 
+    /*
+    "idDrink": "11476",
+      "strDrink": "Highland Fling Cocktail",
+      "strDrinkAlternate": null,
+      "strTags": null,
+      "strVideo": null,
+      "strCategory": "Ordinary Drink",
+      "strIBA": null,
+      "strAlcoholic": "Alcoholic",
+      "strGlass": "Cocktail glass",
+      "strInstructions": "Stir all ingredients (except olive) with ice and strain into a cocktail glass. Add the olive and serve.",
+      "strInstructionsES": null,
+      "strInstructionsDE": "Alle Zutaten (außer Oliven) mit Eis verrühren und in ein Cocktailglas abseihen. Die Olive dazugeben und servieren.",
+      "strInstructionsFR": null,
+      "strInstructionsIT": "Mescolare tutti gli ingredienti (eccetto l'oliva) con ghiaccio e filtrare in una coppetta da cocktail.Aggiungere l'oliva e servire.",
+      "strInstructionsZH-HANS": null,
+      "strInstructionsZH-HANT": null,
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/0bkwca1492975553.jpg",
+      "strIngredient1": "Scotch",
+      "strIngredient2": "Sweet Vermouth",
+      "strIngredient3": "Orange bitters",
+      "strIngredient4": "Olive",
+      "strIngredient5": null,
+      "strIngredient6": null,
+      "strIngredient7": null,
+      "strIngredient8": null,
+      "strIngredient9": null,
+      "strIngredient10": null,
+      "strIngredient11": null,
+      "strIngredient12": null,
+      "strIngredient13": null,
+      "strIngredient14": null,
+      "strIngredient15": null,
+      "strMeasure1": "1 1/2 oz ",
+      "strMeasure2": "3/4 oz ",
+      "strMeasure3": "2 dashes ",
+      "strMeasure4": "1 ",
+      "strMeasure5": null,
+      "strMeasure6": null,
+      "strMeasure7": null,
+      "strMeasure8": null,
+      "strMeasure9": null,
+      "strMeasure10": null,
+      "strMeasure11": null,
+      "strMeasure12": null,
+      "strMeasure13": null,
+      "strMeasure14": null,
+      "strMeasure15": null,
+      "strImageSource": null,
+      "strImageAttribution": null,
+      "strCreativeCommonsConfirmed": "No",
+      "dateModified": "2017-04-23 20:25:53"
+     */
 }
