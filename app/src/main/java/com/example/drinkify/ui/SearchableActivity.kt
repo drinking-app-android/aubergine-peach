@@ -4,10 +4,9 @@ import android.app.SearchManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.drinkify.R
-import com.example.drinkify.uhm.Drink
+import com.example.drinkify.model.Drink
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,6 +1,6 @@
 package com.example.drinkify.ui
 
-import com.example.drinkify.uhm.Post
+import com.example.drinkify.model.Post
 import retrofit2.Call
 import retrofit2.http.GET
 

@@ -1,11 +1,10 @@
 package com.example.drinkify.ui
 
 
-import com.example.drinkify.uhm.Drink
+import com.example.drinkify.model.Drink
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import retrofit2.http.Path
 
 interface NameSearchAPI {
     @get:GET("search.php?s={name}")
