@@ -1,4 +1,4 @@
-package com.example.drinkify.uhm
+package com.example.drinkify.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -159,6 +159,7 @@ class Drink {
     @SerializedName("dateModified")
      val dateModified: String? = null
 
+}
 
     /*
     "idDrink": "11476",
@@ -213,4 +214,3 @@ class Drink {
       "strCreativeCommonsConfirmed": "No",
       "dateModified": "2017-04-23 20:25:53"
      */
-}

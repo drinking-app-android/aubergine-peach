@@ -1,4 +1,4 @@
-package com.example.drinkify.uhm
+package com.example.drinkify.model
 
 import com.google.gson.annotations.SerializedName
 
