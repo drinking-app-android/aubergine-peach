@@ -88,7 +88,7 @@ class RandomizeActivity : AppCompatActivity() {
                         
                         """.trimIndent()
                     content += """
-                        Alcoholic: ${drinkProperty.strGlass}
+                        Glass: ${drinkProperty.strGlass}
                         
                         """.trimIndent()
                     content += """

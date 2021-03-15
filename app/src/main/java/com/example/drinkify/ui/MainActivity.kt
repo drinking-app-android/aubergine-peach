@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val searchButton: Button = findViewById(R.id.searchButton)
         searchButton.setOnClickListener{
             onSearchRequested()
-
         }
 
     }
