@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.drinkify">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Drinkify">
-        <activity android:name=".ui.RandomizeActivity"></activity>
+        <activity android:name=".ui.PreferenceActivity"></activity>
+        <activity android:name=".ui.RandomizeActivity" />
         <activity android:name=".ui.DrinkActivity" />
         <activity android:name=".ui.GenerateActivity" />
         <activity android:name=".ui.MainActivity">
