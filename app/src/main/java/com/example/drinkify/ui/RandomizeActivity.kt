@@ -1,16 +1,15 @@
 package com.example.drinkify.ui
 
-import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.drinkify.R
-import com.example.drinkify.model.Drink
-import com.example.drinkify.model.Post
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,11 +17,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-
 class RandomizeActivity : AppCompatActivity() {
     private var textViewResult: TextView? = null
     private var textViewDrinkName: TextView? = null
     private var textViewIngredients: TextView? = null
+    private var textViewMeasurements: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_randomize)
@@ -30,7 +30,37 @@ class RandomizeActivity : AppCompatActivity() {
         textViewDrinkName = findViewById(R.id.drink_name)
         textViewResult = findViewById(R.id.text_view_result)
         textViewIngredients = findViewById(R.id.ingredients_result)
+        textViewMeasurements = findViewById(R.id.measurements_result)
+
+        val newDrinkButton : Button = findViewById(R.id.newRandom)
+        newDrinkButton.setOnClickListener{
+            val intent = Intent(this, RandomizeActivity::class.java)
+            startActivity(intent)
+        }
         val drinkImage: ImageView = findViewById(R.id.drink_image)
+
+        val homeButton: Button = findViewById(R.id.homeButton)
+        homeButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        }
+
+        val favButton: ImageButton = findViewById(R.id.favoritesButton)
+        favButton.setOnClickListener{
+            var isFavorite = readStae()
+            if (isFavorite){
+                favButton.setBackgroundResource(R.drawable.stardrawable_empty)
+                isFavorite = false
+                saveStae(isFavorite)
+            }else{
+                favButton.setBackgroundResource(R.drawable.stardrawable)
+                isFavorite = true
+                saveStae(isFavorite)
+            }
+
+        }
+
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
@@ -38,7 +68,7 @@ class RandomizeActivity : AppCompatActivity() {
             .build()
         val randomDrinkApi: RandomDrinkAPI = retrofit.create(RandomDrinkAPI::class.java)
         val call = randomDrinkApi.drinks
-        call.enqueue(object: Callback<DrinkHolder> {
+        call.enqueue(object : Callback<DrinkHolder> {
             override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
                 if (!response.isSuccessful) {
                     textViewResult?.setText("Code: " + response.code())
@@ -47,7 +77,7 @@ class RandomizeActivity : AppCompatActivity() {
 
                 val whatsInsideA = response.body()!!
                 //Log.d("drinkname", drink.drink[0].strDrink.toString())
-                for (drinkProperty in whatsInsideA.drink){
+                for (drinkProperty in whatsInsideA.drink) {
                     var content = ""
                     content += """
                         Category: ${drinkProperty.strCategory}
@@ -62,31 +92,50 @@ class RandomizeActivity : AppCompatActivity() {
                         
                         """.trimIndent()
                     content += """
-                        Instructions ${drinkProperty.strInstructions}
+                        Instructions: ${drinkProperty.strInstructions}
                         
                         
                         """.trimIndent()
-                    var ingredientArray = arrayOf(drinkProperty.strIngredient1,
+                    var ingredientArray = arrayOf(
+                        drinkProperty.strIngredient1,
                         drinkProperty.strIngredient2, drinkProperty.strIngredient3,
-                        drinkProperty.strIngredient4,drinkProperty.strIngredient5,
-                        drinkProperty.strIngredient6,drinkProperty.strIngredient7,
+                        drinkProperty.strIngredient4, drinkProperty.strIngredient5,
+                        drinkProperty.strIngredient6, drinkProperty.strIngredient7,
                         drinkProperty.strIngredient8, drinkProperty.strIngredient9,
-                        drinkProperty.strIngredient10,drinkProperty.strIngredient11,
-                        drinkProperty.strIngredient12,drinkProperty.strIngredient13,
-                        drinkProperty.strIngredient14, drinkProperty.strIngredient15)
+                        drinkProperty.strIngredient10, drinkProperty.strIngredient11,
+                        drinkProperty.strIngredient12, drinkProperty.strIngredient13,
+                        drinkProperty.strIngredient14, drinkProperty.strIngredient15
+                    )
 
-                    var measureArray = arrayOf(drinkProperty.strMeasure1,
+                    for (ingredient in ingredientArray) {
+                        if (ingredient != null) {
+                            textViewIngredients?.append("\n" + ingredient.toString())
+                        }
+                    }
+
+                    var measureArray = arrayOf(
+                        drinkProperty.strMeasure1,
                         drinkProperty.strMeasure2, drinkProperty.strMeasure3,
                         drinkProperty.strMeasure4, drinkProperty.strMeasure5,
                         drinkProperty.strMeasure6, drinkProperty.strMeasure7,
                         drinkProperty.strMeasure8, drinkProperty.strMeasure9,
                         drinkProperty.strMeasure10, drinkProperty.strMeasure11,
                         drinkProperty.strMeasure12, drinkProperty.strMeasure13,
-                        drinkProperty.strMeasure14, drinkProperty.strMeasure15)
+                        drinkProperty.strMeasure14, drinkProperty.strMeasure15
+                    )
+
+                    for (measurement in measureArray) {
+                        if (measurement != null) {
+                            textViewMeasurements?.append("\n" + measurement.toString())
+                        }
+                    }
 
                     textViewDrinkName?.append(drinkProperty.strDrink)
-                    //textViewIngredients?.append(ingredientArray)
-                    Glide.with(this@RandomizeActivity).load(drinkProperty.strDrinkThumb).into(drinkImage)
+
+
+                    Glide.with(this@RandomizeActivity).load(drinkProperty.strDrinkThumb).into(
+                        drinkImage
+                    )
                     textViewResult?.append(content)
 
                 }
@@ -98,4 +147,24 @@ class RandomizeActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun readStae(): Boolean {
+        val aSharedPreferenes = getSharedPreferences(
+            "Favourite", Context.MODE_PRIVATE
+        )
+        return aSharedPreferenes.getBoolean("State", true)
+
+    }
+
+    private fun saveStae(isFavourite: Boolean) {
+        val aSharedPreferenes = getSharedPreferences(
+            "Favourite", Context.MODE_PRIVATE
+        )
+        val aSharedPreferenesEdit = aSharedPreferenes
+            .edit()
+        aSharedPreferenesEdit.putBoolean("State", isFavourite)
+        aSharedPreferenesEdit.commit()
+    }
+
+
 }

@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         ranomizeActivityButton.setOnClickListener{
             val intent = Intent(this, RandomizeActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
         val generateActivityButton: Button = findViewById(R.id.generateButton)
         generateActivityButton.setOnClickListener{

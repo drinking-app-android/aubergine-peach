@@ -12,7 +12,6 @@ data class DrinkHolder (
 
 interface RandomDrinkAPI {
     @get:GET("random.php")
-
     val drinks: Call <DrinkHolder>
 
 }

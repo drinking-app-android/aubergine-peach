@@ -25,7 +25,7 @@
             >
 
 
-        <!-- Linear layout to contain textview -->
+        <!-- Linear layout to contain textviews and more linnear layouts containing even more textviews -->
         <LinearLayout
             android:background="#80000000"
             android:layout_width="match_parent"
@@ -33,6 +33,7 @@
             android:orientation="vertical">
 
             <!-- showing text -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -49,16 +50,18 @@
                     android:layout_marginStart="10dp" />
 
                 <ImageButton
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:id="@+id/favoritesButton"
                     android:background="@drawable/star_action"/>
             </LinearLayout>
 
+
+
+
             <ImageView
                 android:id="@+id/drink_image"
-                android:layout_marginTop="-230dp"
+                android:layout_marginTop="-200dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -95,14 +98,13 @@
                     android:scrollHorizontally="false"
                     android:textSize="14sp"
                     android:layout_weight="1" />
-
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
                     android:padding="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -112,6 +114,7 @@
                     android:textColor="@color/white"/>
                 <Button
                     android:padding="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/homeButton"
@@ -119,7 +122,6 @@
                     android:layout_weight="1"
                     android:textColor="@color/white"/>
             </LinearLayout>
-
         </LinearLayout>
 
         </androidx.cardview.widget.CardView>
