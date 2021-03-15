@@ -13,7 +13,8 @@
     <!-- Nested Scroll view -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -33,15 +34,28 @@
                 android:orientation="vertical">
 
                 <!-- showing text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/drink_name"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/drink_name"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp" />
+
+                    <ImageButton
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/favoritesButton"
+                        android:background="@drawable/star_action"/>
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/drink_image"
@@ -52,6 +66,7 @@
                     android:contentDescription="@null" />
 
                 <TextView
+                    android:padding="10dp"
                     android:layout_marginTop="-200dp"
                     android:id="@+id/text_view_result"
                     android:textSize="14sp"
@@ -59,15 +74,56 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ingredients_result"
-                    android:textSize="14sp"/>
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:padding="10dp"
+                        android:id="@+id/ingredients_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollHorizontally="false"
+                        android:textSize="14sp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:padding="10dp"
+                        android:id="@+id/measurements_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollHorizontally="false"
+                        android:textSize="14sp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:padding="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/newRandom"
+                        android:text="New Drink"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"/>
+                    <Button
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/homeButton"
+                        android:text="Home"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
     </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
-

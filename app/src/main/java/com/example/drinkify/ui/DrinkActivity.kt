@@ -1,12 +1,160 @@
 package com.example.drinkify.ui
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.drinkify.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class DrinkActivity : AppCompatActivity() {
+
+    private var textViewResult: TextView? = null
+    private var textViewDrinkName: TextView? = null
+    private var textViewIngredients: TextView? = null
+    private var textViewMeasurements: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink)
+
+        textViewDrinkName  = findViewById(R.id.drink_name)
+        textViewResult  = findViewById(R.id.text_view_result)
+        textViewIngredients  = findViewById(R.id.ingredients_result)
+        textViewMeasurements  = findViewById(R.id.measurements_result)
+        val drinkImage: ImageView = findViewById(R.id.drink_image)
+        val homeButton: Button = findViewById(R.id.homeButton)
+        homeButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        }
+        val favButton: ImageButton = findViewById(R.id.favoritesButton)
+        favButton.setOnClickListener{
+            var isFavorite = readState()
+            if (isFavorite){
+                favButton.setBackgroundResource(R.drawable.stardrawable_empty)
+                isFavorite = false
+                saveState(isFavorite)
+            }else{
+                favButton.setBackgroundResource(R.drawable.stardrawable)
+                isFavorite = true
+                saveState(isFavorite)
+            }
+
+        }
+
+        val idDrinkClicked = intent.getIntExtra("DrinkID", 0)
+        Log.d("Extras", idDrinkClicked.toString())
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        val searchDrinkById = retrofit.create(IdSearchAPI::class.java)
+        val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + idDrinkClicked
+        searchDrinkById.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
+            override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
+                if (!response.isSuccessful) {
+                    Log.d("Response errorBody", response.errorBody().toString())
+                    return
+                }
+                val whatsInsideA = response.body()!!
+                for (drinkProperty in whatsInsideA.drink) {
+                    var content = ""
+                    content += """
+                        Category: ${drinkProperty.strCategory}
+                        
+                        """.trimIndent()
+                    content += """
+                        Type: ${drinkProperty.strAlcoholic}
+                        
+                        """.trimIndent()
+                    content += """
+                        Glass: ${drinkProperty.strGlass}
+                        
+                        """.trimIndent()
+                    content += """
+                        Instructions: ${drinkProperty.strInstructions}
+                        
+                        
+                        """.trimIndent()
+                    var ingredientArray = arrayOf(
+                            drinkProperty.strIngredient1,
+                            drinkProperty.strIngredient2, drinkProperty.strIngredient3,
+                            drinkProperty.strIngredient4, drinkProperty.strIngredient5,
+                            drinkProperty.strIngredient6, drinkProperty.strIngredient7,
+                            drinkProperty.strIngredient8, drinkProperty.strIngredient9,
+                            drinkProperty.strIngredient10, drinkProperty.strIngredient11,
+                            drinkProperty.strIngredient12, drinkProperty.strIngredient13,
+                            drinkProperty.strIngredient14, drinkProperty.strIngredient15
+                    )
+
+                    for (ingredient in ingredientArray) {
+                        if (ingredient != null) {
+                            textViewIngredients?.append("\n" + ingredient.toString())
+                        }
+                    }
+
+                    var measureArray = arrayOf(
+                            drinkProperty.strMeasure1,
+                            drinkProperty.strMeasure2, drinkProperty.strMeasure3,
+                            drinkProperty.strMeasure4, drinkProperty.strMeasure5,
+                            drinkProperty.strMeasure6, drinkProperty.strMeasure7,
+                            drinkProperty.strMeasure8, drinkProperty.strMeasure9,
+                            drinkProperty.strMeasure10, drinkProperty.strMeasure11,
+                            drinkProperty.strMeasure12, drinkProperty.strMeasure13,
+                            drinkProperty.strMeasure14, drinkProperty.strMeasure15
+                    )
+
+                    for (measurement in measureArray) {
+                        if (measurement != null) {
+                            textViewMeasurements?.append("\n" + measurement.toString())
+                        }
+                    }
+
+                    textViewDrinkName?.append(drinkProperty.strDrink)
+
+
+                    Glide.with(this@DrinkActivity).load(drinkProperty.strDrinkThumb).into(
+                            drinkImage
+                    )
+                    textViewResult?.append(content)
+
+                }
+            }
+
+
+            override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
+                Log.d("Failure", "Crash bing boom on failure")
+            }
+        })
+    }
+    private fun readState(): Boolean {
+        val aSharedPreferenes = getSharedPreferences(
+                "Favourite", Context.MODE_PRIVATE
+        )
+        return aSharedPreferenes.getBoolean("State", true)
+
+    }
+    private fun saveState(isFavourite: Boolean) {
+        val aSharedPreferenes = getSharedPreferences(
+                "Favourite", Context.MODE_PRIVATE
+        )
+        val aSharedPreferenesEdit = aSharedPreferenes
+                .edit()
+        aSharedPreferenesEdit.putBoolean("State", isFavourite)
+        aSharedPreferenesEdit.commit()
     }
 }
+
