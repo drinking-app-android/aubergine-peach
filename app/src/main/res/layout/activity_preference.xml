@@ -7,20 +7,31 @@
     android:layout_height="match_parent"
     android:background="@drawable/cocktailstrawberry">
 
-    <RelativeLayout
-        android:id="@+id/header"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_height="110dp">
+
+
+        <Button
+            android:id="@+id/favoritePrefButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Favorites"
+            android:backgroundTint="#80F86E8E"
+            acg:layout_constraintEnd_toEndOf="parent"
+            acg:layout_constraintTop_toTopOf="parent"
+            android:textSize="10dp"
+            acg:cornerRadius="10dp"/>
 
         <TextView
             android:id="@+id/preferenceTextView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
             android:fontFamily="@font/roboto"
-            android:paddingTop="30dp"
             android:shadowColor="#E91E63"
             android:shadowDx="8"
             android:shadowDy="5"
@@ -29,24 +40,29 @@
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#3BFF0057"
-            android:textSize="40sp" />
-    </RelativeLayout>
+            android:textSize="45sp"
+            acg:layout_constraintBottom_toBottomOf="parent"
+            acg:layout_constraintEnd_toEndOf="parent"
+            acg:layout_constraintHorizontal_bias="0.5"
+            acg:layout_constraintStart_toStartOf="parent"
+            acg:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="40dp"
             tools:context=".ui.PreferenceActivity">
 
             <LinearLayout
                 android:id="@+id/linearLayoutLiquor"
-                android:layout_width="335dp"
-                android:layout_height="46dp"
-                android:layout_marginTop="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 acg:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +72,7 @@
 
                 <Button
                     android:id="@+id/vodkaButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="78dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#80F86E8E"
                     android:insetLeft="2.5dp"
@@ -64,7 +80,7 @@
                     android:text="vodka"
                     android:textAllCaps="true"
                     android:textIsSelectable="false"
-                    android:textSize="13dp"
+                    android:textSize="10dp"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -76,19 +92,19 @@
                     android:insetRight="2.5dp"
                     android:text="whiskey"
                     android:textAllCaps="true"
-                    android:textSize="11dp"
+                    android:textSize="10dp"
                     acg:cornerRadius="10dp" />
 
                 <Button
                     android:id="@+id/romButton"
-                    android:layout_width="71dp"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#80F86E8E"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
                     android:text="rom"
                     android:textAllCaps="true"
-                    android:textSize="12dp"
+                    android:textSize="11dp"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -123,12 +139,13 @@
                 acg:layout_constraintStart_toStartOf="parent"
                 acg:layout_constraintTop_toBottomOf="@id/linearLayoutLiquor" />
 
+
             <SeekBar
                 android:id="@+id/seekBarBeer"
-                android:layout_width="325dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_width="300dp"
+                android:layout_height="56dp"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:indeterminate="false"
                 android:max="100"
                 android:progress="0"
@@ -139,20 +156,26 @@
                 acg:layout_constraintStart_toStartOf="parent"
                 acg:layout_constraintTop_toBottomOf="@id/textViewDrunkQuestion" />
 
-
             <TextView
                 android:id="@+id/textViewLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="None"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#0B0202"
+                android:textStyle="bold"
                 acg:layout_constraintEnd_toEndOf="parent"
                 acg:layout_constraintHorizontal_bias="0.5"
                 acg:layout_constraintStart_toStartOf="parent"
                 acg:layout_constraintTop_toBottomOf="@id/seekBarBeer" />
 
+
             <LinearLayout
                 android:id="@+id/linearLayoutFlavour"
-                android:layout_width="335dp"
+                android:layout_width="320dp"
                 android:layout_height="46dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
@@ -164,7 +187,7 @@
                 acg:layout_constraintEnd_toEndOf="parent"
                 acg:layout_constraintHorizontal_bias="0.5"
                 acg:layout_constraintStart_toStartOf="parent"
-                acg:layout_constraintTop_toBottomOf="@id/textViewLevel">
+                acg:layout_constraintTop_toBottomOf="@id/seekBarBeer">
 
                 <Button
                     android:id="@+id/sweetButton"
@@ -175,7 +198,7 @@
                     android:insetRight="2.5dp"
                     android:text="sweet"
                     android:textAllCaps="true"
-                    android:textSize="13dp"
+                    android:textSize="11dp"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -187,12 +210,12 @@
                     android:insetRight="2.5dp"
                     android:text="sour"
                     android:textAllCaps="true"
-                    android:textSize="13dp"
+                    android:textSize="11dp"
                     acg:cornerRadius="10dp" />
 
                 <Button
                     android:id="@+id/bitterButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#80F86E8E"
@@ -213,7 +236,7 @@
                     android:insetRight="2.5dp"
                     android:text="salt"
                     android:textAllCaps="true"
-                    android:textSize="13dp"
+                    android:textSize="11dp"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -285,8 +308,8 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutGetDrink"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="276dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="46dp"
@@ -299,7 +322,7 @@
 
                 <Button
                     android:id="@+id/savePrefButton"
-                    android:layout_width="211dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#80F86E8E"
@@ -310,7 +333,7 @@
 
                 <Button
                     android:id="@+id/generatePrefButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#80F86E8E"

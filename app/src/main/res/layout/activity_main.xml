@@ -76,5 +76,6 @@
         android:backgroundTint="#80F86E8E"
         app:icon="@android:drawable/ic_menu_search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

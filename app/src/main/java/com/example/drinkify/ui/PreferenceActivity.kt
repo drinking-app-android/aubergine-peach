@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.drinkify.R
 
 class PreferenceActivity : AppCompatActivity() {
@@ -14,7 +15,8 @@ class PreferenceActivity : AppCompatActivity() {
         val seekBar = findViewById<SeekBar>(R.id.seekBarBeer)
         val textView = findViewById<TextView>(R.id.textViewLevel)
 
-        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener
+        {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (progress>0 && progress<=25)
                 {
@@ -33,14 +35,17 @@ class PreferenceActivity : AppCompatActivity() {
                     textView.setText("Mucho")
                 }
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, "Start tracking", Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, "Stop tracking", Toast.LENGTH_SHORT).show()
             }
         })
+
+
+
+
     }
 }
