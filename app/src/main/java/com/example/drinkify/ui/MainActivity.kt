@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
         val generateActivityButton: Button = findViewById(R.id.generateButton)
         generateActivityButton.setOnClickListener{
-         val intent = Intent(this, GenerateActivity::class.java)
+         val intent = Intent(this, PreferenceActivity::class.java)
             startActivity(intent)
         }
 

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:acg="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cocktailstrawberry">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/preferenceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:paddingTop="30dp"
+            android:shadowColor="#E91E63"
+            android:shadowDx="8"
+            android:shadowDy="5"
+            android:shadowRadius="8"
+            android:text="Preferences"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#3BFF0057"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="40dp"
+            tools:context=".ui.PreferenceActivity">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutLiquor"
+                android:layout_width="335dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="90dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintHorizontal_bias="0.5"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/vodkaButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="vodka"
+                    android:textAllCaps="true"
+                    android:textIsSelectable="false"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/whiskeyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="whiskey"
+                    android:textAllCaps="true"
+                    android:textSize="11dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/romButton"
+                    android:layout_width="71dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="rom"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/tequilaButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="tequila"
+                    android:textAllCaps="true"
+                    android:textSize="10dp"
+                    acg:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewDrunkQuestion"
+                android:layout_width="271dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto"
+                android:shadowColor="#0C0909"
+                android:shadowDx="5"
+                android:shadowDy="3"
+                android:shadowRadius="2"
+                android:text="How drunk do you want to get tonight?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintHorizontal_bias="0.5"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@id/linearLayoutLiquor" />
+
+            <SeekBar
+                android:id="@+id/seekBarBeer"
+                android:layout_width="325dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/track"
+                android:thumb="@drawable/beercopy"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintHorizontal_bias="0.762"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@id/textViewDrunkQuestion" />
+
+
+            <TextView
+                android:id="@+id/textViewLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintHorizontal_bias="0.5"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@id/seekBarBeer" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFlavour"
+                android:layout_width="335dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintHorizontal_bias="0.5"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@id/textViewLevel">
+
+                <Button
+                    android:id="@+id/sweetButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="sweet"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/sourButton"
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="sour"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/bitterButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="bitter"
+                    android:textAllCaps="true"
+                    android:textSize="11dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/saltButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="salt"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayourTexture"
+                android:layout_width="228dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@id/linearLayoutFlavour">
+
+                <Button
+                    android:id="@+id/creamyButton"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="creamy"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/fruityButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="fruity"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutVegan"
+                android:layout_width="120dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@+id/linearLayourTexture">
+
+                <Button
+                    android:id="@+id/veganButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80F86E8E"
+                    android:text="vegan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13dp"
+                    acg:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutGetDrink"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="46dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal"
+                acg:layout_constraintEnd_toEndOf="parent"
+                acg:layout_constraintStart_toStartOf="parent"
+                acg:layout_constraintTop_toBottomOf="@+id/linearLayoutVegan">
+
+                <Button
+                    android:id="@+id/savePrefButton"
+                    android:layout_width="211dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="save preference"
+                    acg:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/generatePrefButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80F86E8E"
+                    android:insetLeft="2.5dp"
+                    android:insetRight="2.5dp"
+                    android:text="generate preference"
+                    android:textAllCaps="true"
+                    acg:cornerRadius="10dp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
