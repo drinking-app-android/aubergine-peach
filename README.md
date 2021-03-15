@@ -3,7 +3,7 @@
 <img src="https://media1.giphy.com/media/cNDlnilnnPjOAIZsxl/giphy.gif"></img>
 <h2> Features of this app:</h2>
   <ul>
-  <li><a href="getdrinkspref">Get drinks according to your preferences</a></<li>
+  <li><a href="#getdrinkspref">Get drinks according to your preferences</a></<li>
     <li>Get a random drink</<li>
     <li>Search all drinks</<li>
     <li>Add a drink to favorites</li>
