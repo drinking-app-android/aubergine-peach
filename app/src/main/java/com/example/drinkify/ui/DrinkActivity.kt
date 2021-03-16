@@ -61,7 +61,7 @@ class DrinkActivity : AppCompatActivity() {
                 .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        val searchDrinkById = retrofit.create(IdSearchAPI::class.java)
+        val searchDrinkById = retrofit.create(SearchAPI::class.java)
         val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + idDrinkClicked
         searchDrinkById.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
             override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {

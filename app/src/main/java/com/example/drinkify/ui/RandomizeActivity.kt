@@ -58,9 +58,7 @@ class RandomizeActivity : AppCompatActivity() {
                 isFavorite = true
                 saveStae(isFavorite)
             }
-
         }
-
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")

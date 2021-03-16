@@ -96,13 +96,13 @@
                     acg:cornerRadius="10dp" />
 
                 <Button
-                    android:id="@+id/romButton"
+                    android:id="@+id/rumButton"
                     android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#80F86E8E"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="rom"
+                    android:text="rum"
                     android:textAllCaps="true"
                     android:textSize="11dp"
                     acg:cornerRadius="10dp" />
@@ -148,7 +148,8 @@
                 android:gravity="center_vertical"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="0"
+                android:min="0"
+                android:progress="50"
                 android:progressDrawable="@drawable/track"
                 android:thumb="@drawable/beercopy"
                 acg:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +164,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
-                android:text="None"
+                android:text="A little"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#0B0202"
                 android:textStyle="bold"
@@ -297,7 +298,7 @@
                 <Button
                     android:id="@+id/veganButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#80F86E8E"
                     android:text="vegan"

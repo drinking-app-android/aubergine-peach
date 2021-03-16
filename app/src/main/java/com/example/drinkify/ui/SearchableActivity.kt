@@ -35,23 +35,24 @@ class SearchableActivity : AppCompatActivity() {
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
-                val searchDrinkByName = retrofit.create(NameSearchAPI::class.java)
-
+                val searchDrinkByName = retrofit.create(SearchAPI::class.java)
                 searchDrinkByName.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
                     override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
                         if (!response.isSuccessful) {
                             Log.d("Response errorBody", response.errorBody().toString())
                             return
                         }
+                        if(response.body() == null){
+                            itemsAdapter.add("No drink found, did you spell wrong? Maybe time for some water!")
+                        }else{
                         val whatsInsideA = response.body()!!
                         for (drinkProperty in whatsInsideA.drink) {
                             itemsAdapter.add(drinkProperty.strDrink)
                             drinkProperty.idDrink?.toInt()?.let { arraylist.add(it) }
 
                         }
+                        }
                     }
-
-
                     override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
                         Log.d("Failure", "Crash bing boom on failure")
                     }
