@@ -84,15 +84,21 @@ class PreferenceActivity : AppCompatActivity() {
             TODO("Fixing fundamentals first")
         }
         val generateButton = findViewById<Button>(R.id.generatePrefButton)
-        generateButton.setOnClickListener{
+        generateButton.setOnClickListener {
 
-            val searchResultList: MutableList<String> = ArrayList(5)
-            val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + userChoices
+            val searchResultList: MutableList<String> = ArrayList()
+            var searchURL = ""
             val retrofit = Retrofit.Builder()
                     .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-
+            if (userChoices == "non-alcoholic") {
+                searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic"
+            } else if (userChoices == "shot") {
+                searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Shot"
+            }else {
+                searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + userChoices
+            }
             val searchDrinkByIngredient = retrofit.create(SearchAPI::class.java)
             searchDrinkByIngredient.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
                 override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
@@ -103,8 +109,6 @@ class PreferenceActivity : AppCompatActivity() {
                     val whatsInsideA = response.body()!!
                     for (drinkProperty in whatsInsideA.drink) {
                         searchResultList.add(drinkProperty.idDrink.toString())
-                        drinkProperty.strDrink?.let { it1 -> Log.d("DrinkGeneratedName", it1) }
-                        drinkProperty.idDrink?.let { it1 -> Log.d("DrinkGeneratedID", it1) }
                     }
                     if(searchResultList.isNotEmpty()){
                         val drinkIDgenerated = searchResultList.random().toInt()
@@ -148,6 +152,7 @@ class PreferenceActivity : AppCompatActivity() {
                 else if (progress>75 && progress<=100)
                 {
                     textView.setText("Mucho")
+                    userChoices = "shot"
                 }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
