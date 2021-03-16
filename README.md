@@ -11,4 +11,4 @@
   <h2 id="getdrinkspref">Get drinks according to your preferences</h2>
   <img src="https://i.imgur.com/SJ0clQX.png" width="292" height="550" float:right>
   <h2 id=randomdrink>Get a random drink</h2>
-<p>Developed by: Lucas Strand, Emil Karlsson and Leonora ´Mangs</p>
+<p>Developed by: Lucas Strand, Emil Karlsson and Leonora Mangs</p>
