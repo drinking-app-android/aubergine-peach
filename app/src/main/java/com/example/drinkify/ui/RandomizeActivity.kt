@@ -1,15 +1,14 @@
 package com.example.drinkify.ui
 
+import AppDatabase
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.drinkify.R
+import com.example.drinkify.model.Fav
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,19 +45,7 @@ class RandomizeActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
-        val favButton: ImageButton = findViewById(R.id.favoritesButton)
-        favButton.setOnClickListener{
-            var isFavorite = readStae()
-            if (isFavorite){
-                favButton.setBackgroundResource(R.drawable.stardrawable_empty)
-                isFavorite = false
-                saveStae(isFavorite)
-            }else{
-                favButton.setBackgroundResource(R.drawable.stardrawable)
-                isFavorite = true
-                saveStae(isFavorite)
-            }
-        }
+
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
@@ -136,6 +123,22 @@ class RandomizeActivity : AppCompatActivity() {
                     )
                     textViewResult?.append(content)
 
+                    val favButton: ImageButton = findViewById(R.id.favoritesButton)
+                    favButton.setOnClickListener{
+                        var isFavorite = readStae()
+                        if (isFavorite){
+                            favButton.setBackgroundResource(R.drawable.stardrawable_empty)
+                            isFavorite = false
+                            saveStae(isFavorite)
+                        }else{
+                            //TODO: Add to the database. It is maybe work yes, kan inte inspektera table dock. Vilket kanske betyder att det inte funkar..
+                            favButton.setBackgroundResource(R.drawable.stardrawable)
+                            isFavorite = true
+                            drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 -> addToFavorites(it1, it2) } }
+                            saveStae(isFavorite)
+                        }
+                    }
+
                 }
 
             }
@@ -162,6 +165,25 @@ class RandomizeActivity : AppCompatActivity() {
             .edit()
         aSharedPreferenesEdit.putBoolean("State", isFavourite)
         aSharedPreferenesEdit.commit()
+    }
+
+    private fun addToFavorites (theDrinkId: String, theDrinkName: String){
+        val drinkId : String = theDrinkId
+        val drinkName: String = theDrinkName
+        val appDatabase: AppDatabase = AppDatabase(this)
+        if (!drinkId.isEmpty() && !drinkName.isEmpty()) {
+            val status =
+                    appDatabase.addFavDrink(Fav(0, drinkId, drinkName))
+            if (status > -1) {
+                Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(
+                    applicationContext,
+                    "Error oh no uwu fucky wucky senpai",
+                    Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 
