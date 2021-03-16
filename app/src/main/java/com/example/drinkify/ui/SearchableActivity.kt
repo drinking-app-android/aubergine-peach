@@ -29,9 +29,9 @@ class SearchableActivity : AppCompatActivity() {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             if (query != null) {
-                val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query
+                val searchURL = "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=" + query
                 val retrofit = Retrofit.Builder()
-                        .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
+                        .baseUrl("https://www.thecocktaildb.com/api/json/v2/9973533/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 

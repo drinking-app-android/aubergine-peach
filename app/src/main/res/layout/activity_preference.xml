@@ -74,7 +74,7 @@
                     android:id="@+id/vodkaButton"
                     android:layout_width="78dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#80F86E8E"
+                    android:backgroundTint="@color/buttonColor"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
                     android:text="vodka"

@@ -61,7 +61,7 @@ class RandomizeActivity : AppCompatActivity() {
         }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
+            .baseUrl("https://www.thecocktaildb.com/api/json/v2/9973533/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val randomDrinkApi: RandomDrinkAPI = retrofit.create(RandomDrinkAPI::class.java)
