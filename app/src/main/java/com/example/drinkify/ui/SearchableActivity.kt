@@ -42,15 +42,15 @@ class SearchableActivity : AppCompatActivity() {
                             Log.d("Response errorBody", response.errorBody().toString())
                             return
                         }
-                        if(response.body() == null){
-                            itemsAdapter.add("No drink found, did you spell wrong? Maybe time for some water!")
+                        if(response.body()?.drink.isNullOrEmpty()){
+                            itemsAdapter.add("No drink found, did you spell wrong? It might be time for some water!")
                         }else{
-                        val whatsInsideA = response.body()!!
-                        for (drinkProperty in whatsInsideA.drink) {
-                            itemsAdapter.add(drinkProperty.strDrink)
-                            drinkProperty.idDrink?.toInt()?.let { arraylist.add(it) }
+                            val whatsInsideA = response.body()!!
+                            for (drinkProperty in whatsInsideA.drink) {
+                                itemsAdapter.add(drinkProperty.strDrink)
+                                drinkProperty.idDrink?.toInt()?.let { arraylist.add(it) }
 
-                        }
+                            }
                         }
                     }
                     override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
@@ -58,7 +58,7 @@ class SearchableActivity : AppCompatActivity() {
                     }
                 })
             }
-            }
+        }
         val searchListView = findViewById<ListView>(R.id.searchListView)
         searchListView.adapter = itemsAdapter
         searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
@@ -76,8 +76,8 @@ class SearchableActivity : AppCompatActivity() {
                 of that drink!
                  */
 
-            }
-        }
+    }
+}
 
 
 
