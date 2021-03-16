@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PreferenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preference)
         var userChoices = ""
@@ -84,10 +85,47 @@ class PreferenceActivity : AppCompatActivity() {
         }
         val generateButton = findViewById<Button>(R.id.generatePrefButton)
         generateButton.setOnClickListener{
-            val drinkIDgenerated = generateDrink(userChoices)
-            val intent = Intent(this, DrinkActivity::class.java)
-            intent.putExtra("DrinkID", drinkIDgenerated)
-            startActivity(intent)
+
+            val searchResultList: MutableList<String> = ArrayList(5)
+            val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + userChoices
+            val retrofit = Retrofit.Builder()
+                    .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            val searchDrinkByIngredient = retrofit.create(SearchAPI::class.java)
+            searchDrinkByIngredient.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
+                override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
+                    if (!response.isSuccessful) {
+                        Log.d("Response errorBody", response.errorBody().toString())
+                        return
+                    }
+                    val whatsInsideA = response.body()!!
+                    for (drinkProperty in whatsInsideA.drink) {
+                        searchResultList.add(drinkProperty.idDrink.toString())
+                        drinkProperty.strDrink?.let { it1 -> Log.d("DrinkGeneratedName", it1) }
+                        drinkProperty.idDrink?.let { it1 -> Log.d("DrinkGeneratedID", it1) }
+                    }
+                    if(searchResultList.isNotEmpty()){
+                        val drinkIDgenerated = searchResultList.random().toInt()
+                        val intent = Intent(this@PreferenceActivity, DrinkActivity::class.java)
+                        intent.putExtra("DrinkID", drinkIDgenerated)
+                        startActivity(intent)
+                    }else{
+                        val intent = Intent(this@PreferenceActivity, DrinkActivity::class.java)
+                        intent.putExtra("DrinkID", 13625)
+                        startActivity(intent)
+                    }
+                }
+                override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
+                    Log.d("Failure", "Crash bing boom on failure")
+                }
+
+            })
+
+            searchResultList.toList()
+
+
         }
 
 
@@ -125,36 +163,7 @@ class PreferenceActivity : AppCompatActivity() {
 
 
     }
-    private fun generateDrink(userChoices: String): Int {
-        var searchResultArray = arrayListOf<Int>()
 
-        val searchURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + userChoices
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        val searchDrinkByIngredient = retrofit.create(SearchAPI::class.java)
-        searchDrinkByIngredient.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
-            //CRASHES ON THE ROW BELOW
-            override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
-                if (!response.isSuccessful) {
-                    Log.d("Response errorBody", response.errorBody().toString())
-                    return
-                }
-                    val whatsInsideA = response.body()!!
-                    for (drinkProperty in whatsInsideA.drink) {
-                        drinkProperty.idDrink?.toInt()?.let { searchResultArray.add(it) }
-                        drinkProperty.idDrink?.let { Log.d("drinkID generated", it) }
-                }
-            }
-            override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
-                Log.d("Failure", "Crash bing boom on failure")
-            }
-
-        })
-        return searchResultArray.random()
-    }
 }
 
 

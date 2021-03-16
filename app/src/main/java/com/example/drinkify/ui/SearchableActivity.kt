@@ -62,8 +62,6 @@ class SearchableActivity : AppCompatActivity() {
         val searchListView = findViewById<ListView>(R.id.searchListView)
         searchListView.adapter = itemsAdapter
         searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-            Log.d("Drink clicked", id.toString())
-            Log.d("Drink id clicked", arraylist[id.toInt()].toString())
             val intent = Intent(this, DrinkActivity::class.java)
             intent.putExtra("DrinkID", arraylist[id.toInt()])
             startActivity(intent)
