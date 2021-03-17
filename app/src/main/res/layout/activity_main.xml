@@ -4,26 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/alchol"
+    android:background="@drawable/backgroundcocktail"
     android:outlineAmbientShadowColor="#FFFFFF"
     android:outlineSpotShadowColor="#FFFFFF"
     tools:context=".ui.MainActivity">
 
 
- <Button
+    <Button
+        android:id="@+id/searchButton"
+
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="#8F191818"
+        app:icon="@android:drawable/ic_menu_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="345dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="80dp"
+
+        android:backgroundTint="#E91E63"
+        android:editable="false"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:inputType="textPersonName"
+        android:scrollbarSize="4dp"
+        android:shadowColor="#0D3A12"
+        android:shadowDx="15"
+        android:shadowDy="5"
+        android:shadowRadius="8"
+        android:text="DRINKIFY"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#3B0C0C0C"
+        android:textSize="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/randomizeButton"
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#80F86E8E"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="#8F191818"
+        android:fontFamily="@font/roboto"
         android:text="Randomize"
-        android:textColor="#FFFFFF"
+        android:textColor="#BFBABA"
         android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#8F191818"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <Button
         android:id="@+id/generateButton"
@@ -32,9 +72,11 @@
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#80F86E8E"
+        android:backgroundTint="#8F191818"
+        android:fontFamily="@font/roboto"
         android:text="Generate"
-        android:textColor="#FFFFFF"
+        android:textColor="#BFBABA"
+        android:textStyle="bold"
         android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,51 +88,16 @@
         android:layout_height="75dp"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginTop="180dp"
-        android:backgroundTint="#80F86E8E"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#8F191818"
+        android:fontFamily="@font/roboto"
+        android:textColor="#BFBABA"
+        android:textStyle="bold"
         android:text="Favorites"
-        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/randomizeButton" />
+        app:layout_constraintTop_toBottomOf="@id/generateButton" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="349dp"
-        android:layout_height="161dp"
-
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="44dp"
-
-        android:backgroundTint="#E91E63"
-        android:editable="false"
-        android:ems="10"
-        android:fontFamily="@font/roboto"
-        android:inputType="textPersonName"
-        android:scrollbarSize="4dp"
-        android:shadowColor="#E91E63"
-        android:shadowDx="8"
-        android:shadowDy="5"
-        android:shadowRadius="8"
-        android:text="DRINKIFY"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#3BFF0057"
-        android:textSize="80dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/searchButton"
-
-        android:layout_width="57dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:backgroundTint="#80F86E8E"
-        app:icon="@android:drawable/ic_menu_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

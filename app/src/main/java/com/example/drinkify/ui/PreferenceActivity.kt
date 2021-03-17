@@ -206,14 +206,14 @@ class PreferenceActivity : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (progress > 0 && progress <= 25) {
-                    textView.setText("None")
+                    textView.setText("Super sober")
                     userChoices[3] = "non-alcoholic"
                 } else if (progress > 25 && progress <= 50) {
-                    textView.setText("Little")
+                    textView.setText("A little tipsy")
                 } else if (progress > 50 && progress <= 75) {
-                    textView.setText("Very")
+                    textView.setText("Very tipsy")
                 } else if (progress > 75 && progress <= 100) {
-                    textView.setText("Mucho")
+                    textView.setText("A lot drunk")
                     userChoices[4] = "shot"
                 }
             }
