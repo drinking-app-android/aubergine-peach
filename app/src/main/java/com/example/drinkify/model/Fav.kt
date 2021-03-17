@@ -9,6 +9,9 @@ data class Fav (
     val idDrink: String? = null,
 
     @SerializedName("strDrink")
-    val strDrink: String? = null
+    val strDrink: String? = null,
+
+    @SerializedName("strDrinkThumb")
+    val strDrinkThumb: String? = null
 )
 

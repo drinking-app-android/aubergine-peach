@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.drinkify">
+    package="com.example.drinkify" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,11 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Drinkify">
+        android:theme="@style/Theme.Drinkify" >
+        <activity android:name=".ui.FavDrinkActivity" >
+        </activity>
+        <activity android:name=".ui.PreferenceActivity" />
+        <activity android:name=".ui.SearchableActivity" >
 
-        <activity android:name=".ui.PreferenceActivity"></activity>
-
-        <activity android:name=".ui.SearchableActivity">
             <!-- This makes mainActivity into an searchable activity! -->
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -24,17 +25,19 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity android:name=".ui.RandomizeActivity" />
         <activity android:name=".ui.DrinkActivity" />
         <activity android:name=".ui.GenerateActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.default_searchable"
-                       android:value=".ui.SearchableActivity" />
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".ui.SearchableActivity" />
         </activity>
     </application>
 

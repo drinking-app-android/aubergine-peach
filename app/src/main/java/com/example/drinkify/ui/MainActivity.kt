@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
          val intent = Intent(this, PreferenceActivity::class.java)
             startActivity(intent)
         }
+        val favoritesActivityButton: Button = findViewById(R.id.viewFavDrinks)
+        favoritesActivityButton.setOnClickListener {
+            val intent = Intent(this, FavDrinkActivity::class.java)
+            startActivity(intent)
+        }
 
         val searchButton: Button = findViewById(R.id.searchButton)
         searchButton.setOnClickListener{

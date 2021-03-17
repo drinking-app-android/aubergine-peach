@@ -134,7 +134,14 @@ class RandomizeActivity : AppCompatActivity() {
                             //TODO: Add to the database. It is maybe work yes, kan inte inspektera table dock. Vilket kanske betyder att det inte funkar..
                             favButton.setBackgroundResource(R.drawable.stardrawable)
                             isFavorite = true
-                            drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 -> addToFavorites(it1, it2) } }
+                            drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 ->
+                                drinkProperty.strDrinkThumb?.let { it3 ->
+                                    addToFavorites(it1,
+                                        it2, it3
+                                    )
+                                }
+                            } }
+                            //drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 -> addToFavorites(it1, it2) } }
                             saveStae(isFavorite)
                         }
                     }
@@ -167,13 +174,14 @@ class RandomizeActivity : AppCompatActivity() {
         aSharedPreferenesEdit.commit()
     }
 
-    private fun addToFavorites (theDrinkId: String, theDrinkName: String){
+    private fun addToFavorites (theDrinkId: String, theDrinkName: String, theDrinkImg: String){
         val drinkId : String = theDrinkId
         val drinkName: String = theDrinkName
+        val drinkImg: String = theDrinkImg
         val appDatabase: AppDatabase = AppDatabase(this)
         if (!drinkId.isEmpty() && !drinkName.isEmpty()) {
             val status =
-                    appDatabase.addFavDrink(Fav(0, drinkId, drinkName))
+                    appDatabase.addFavDrink(Fav(0, drinkId, drinkName, drinkImg))
             if (status > -1) {
                 Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
             }
