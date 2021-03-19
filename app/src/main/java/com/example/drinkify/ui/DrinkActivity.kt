@@ -1,16 +1,15 @@
 package com.example.drinkify.ui
 
+import AppDatabase
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.drinkify.R
+import com.example.drinkify.model.Fav
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,19 +39,9 @@ class DrinkActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
         val favButton: ImageButton = findViewById(R.id.favoritesButton)
-        favButton.setOnClickListener{
-            var isFavorite = readState()
-            if (isFavorite){
-                favButton.setBackgroundResource(R.drawable.stardrawable_empty)
-                isFavorite = false
-                saveState(isFavorite)
-            }else{
-                favButton.setBackgroundResource(R.drawable.stardrawable)
-                isFavorite = true
-                saveState(isFavorite)
-            }
 
-        }
+        val databaseHandler: AppDatabase = AppDatabase(this)
+        val favList = databaseHandler.viewFav()
 
         val idDrinkClicked = intent.getIntExtra("DrinkID", 0)
         Log.d("Extras", idDrinkClicked.toString())
@@ -130,7 +119,35 @@ class DrinkActivity : AppCompatActivity() {
                             drinkImage
                     )
                     textViewResult?.append(content)
+                    if (favList.contains(Fav(idDrinkClicked.toString(), drinkProperty.strDrink))){
+                        Log.d("Favorite", "true")
+                        favButton.setBackgroundResource(R.drawable.stardrawable)
+                        saveState(true)
+                    }else{
+                        Log.d("Favorite", "false")
+                    }
+                    favButton.setOnClickListener{
+                        var isFavorite = readState()
 
+
+                        if (isFavorite){
+                            favButton.setBackgroundResource(R.drawable.stardrawable_empty)
+                            isFavorite = false
+                            saveState(isFavorite)
+
+                        }else{
+                            favButton.setBackgroundResource(R.drawable.stardrawable)
+                            isFavorite = true
+                            drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 ->
+                                addToFavorites(it1,
+                                        it2
+                                )
+
+                            } }
+                            saveState(isFavorite)
+                        }
+
+                    }
                 }
             }
 
@@ -140,6 +157,23 @@ class DrinkActivity : AppCompatActivity() {
             }
         })
     }
+    fun addToFavorites (theDrinkId: String, theDrinkName: String){
+        val appDatabase: AppDatabase = AppDatabase(this)
+        if (!theDrinkId.isEmpty() && !theDrinkName.isEmpty()) {
+            val status =
+                    appDatabase.addFavDrink(Fav(theDrinkId, theDrinkName))
+            if (status > -1) {
+                Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+            }else {
+                Toast.makeText(
+                        applicationContext,
+                        "Error oh no uwu fucky wucky senpai",
+                        Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     private fun readState(): Boolean {
         val aSharedPreferenes = getSharedPreferences(
                 "Favourite", Context.MODE_PRIVATE
