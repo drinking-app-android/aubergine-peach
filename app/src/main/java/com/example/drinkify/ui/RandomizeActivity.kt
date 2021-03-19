@@ -4,6 +4,7 @@ import AppDatabase
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -45,7 +46,8 @@ class RandomizeActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
-
+        val databaseHandler: AppDatabase = AppDatabase(this)
+        val favList = databaseHandler.viewFav()
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.thecocktaildb.com/api/json/v2/9973533/")
@@ -124,6 +126,20 @@ class RandomizeActivity : AppCompatActivity() {
                     textViewResult?.append(content)
 
                     val favButton: ImageButton = findViewById(R.id.favoritesButton)
+                    /*
+                    val databaseHandler: AppDatabase = AppDatabase(this)
+                    //calling the viewFAV method of DatabaseHandler class to read the records
+                    val favList: ArrayList<Fav> = databaseHandler.viewFav()
+
+                     */
+                    if (favList.contains(Fav(drinkProperty.idDrink, drinkProperty.strDrink))){
+                        Log.d("Favorite", "true")
+                        favButton.setBackgroundResource(R.drawable.stardrawable)
+                        saveStae(true)
+                    }else{
+                        Log.d("Favorite", "false")
+                    }
+
                     favButton.setOnClickListener{
                         var isFavorite = readStae()
                         if (isFavorite){
@@ -135,13 +151,11 @@ class RandomizeActivity : AppCompatActivity() {
                             favButton.setBackgroundResource(R.drawable.stardrawable)
                             isFavorite = true
                             drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 ->
-                                drinkProperty.strDrinkThumb?.let { it3 ->
                                     addToFavorites(it1,
-                                        it2, it3
+                                        it2
                                     )
-                                }
+
                             } }
-                            //drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 -> addToFavorites(it1, it2) } }
                             saveStae(isFavorite)
                         }
                     }
@@ -174,23 +188,20 @@ class RandomizeActivity : AppCompatActivity() {
         aSharedPreferenesEdit.commit()
     }
 
-    private fun addToFavorites (theDrinkId: String, theDrinkName: String, theDrinkImg: String){
-        val drinkId : String = theDrinkId
-        val drinkName: String = theDrinkName
-        val drinkImg: String = theDrinkImg
+     fun addToFavorites (theDrinkId: String, theDrinkName: String){
         val appDatabase: AppDatabase = AppDatabase(this)
-        if (!drinkId.isEmpty() && !drinkName.isEmpty()) {
+        if (!theDrinkId.isEmpty() && !theDrinkName.isEmpty()) {
             val status =
-                    appDatabase.addFavDrink(Fav(0, drinkId, drinkName, drinkImg))
+                    appDatabase.addFavDrink(Fav(theDrinkId, theDrinkName))
             if (status > -1) {
                 Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+            }else {
+                Toast.makeText(
+                        applicationContext,
+                        "Error oh no uwu fucky wucky senpai",
+                        Toast.LENGTH_LONG
+                ).show()
             }
-        } else {
-            Toast.makeText(
-                    applicationContext,
-                    "Error oh no uwu fucky wucky senpai",
-                    Toast.LENGTH_LONG
-            ).show()
         }
     }
 
