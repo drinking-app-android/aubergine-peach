@@ -74,7 +74,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="#8F191818"
         android:fontFamily="@font/roboto"
-        android:text="Generate"
+        android:text="Drinkify"
         android:textColor="#BFBABA"
         android:textStyle="bold"
         android:textSize="16sp"

@@ -10,4 +10,5 @@
     <color name="buttonColor">#80F86E8E</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightGray">#EBEBEB</color>
+    <color name="goodGray">#262626</color>
 </resources>

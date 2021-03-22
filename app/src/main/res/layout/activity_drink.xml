@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/goodGray"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="2dp"
             >
@@ -110,7 +111,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/gradientthreesixtydrawable"
                         android:padding="10dp"
                         android:text="Home"
                         android:textColor="@color/white" />
