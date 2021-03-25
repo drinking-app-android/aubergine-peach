@@ -4,7 +4,7 @@
 <h2> Features of this app:</h2>
   <ul>
   <li><a href="#getdrinkspref">Get drinks according to your preferences</a></<li>
-  <li><a href="#randomdrink">Get a random drink</a><li>
+  <li><a href="#randomdrink">Get a random drink</a></li>
   <li><a href="#searchalldrinks">Search all drinks</a></<li>
   <li><a href="favdrink">Add drinks to favorites</a></li>
   </ul>
