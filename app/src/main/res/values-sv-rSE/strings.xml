@@ -6,7 +6,7 @@
     <string name="category">Kategori: </string>
     <string name="type">Typ: </string>
     <string name="glass">Glas: </string>
-    <string name="instructions">Instructioner: </string>
+    <string name="instructions">Instruktioner: </string>
     <string name="deleteRecord">Ta bort favorit</string>
     <string name="validateDelete">Är du säker på att du vil ta bort favorit?</string>
     <string name="yes">Ja</string>

@@ -22,10 +22,10 @@ class SearchableActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchable)
-        var drinkFound = false
         val itemsAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this@SearchableActivity, android.R.layout.simple_list_item_1)
 
-        var arraylist = ArrayList<Int>()
+        val searchListView = findViewById<ListView>(R.id.searchListView)
+        val arraylist = ArrayList<Int>()
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             if (query != null) {
@@ -36,24 +36,35 @@ class SearchableActivity : AppCompatActivity() {
                         .build();
 
                 val searchDrinkByName = retrofit.create(SearchAPI::class.java)
-                searchDrinkByName.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
+                searchDrinkByName.list(searchURL).enqueue(object : Callback<DrinkHolder> {
                     override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
                         if (!response.isSuccessful) {
                             Toast.makeText(applicationContext, getString(R.string.APIError), Toast.LENGTH_LONG).show()
                             return
                         }
                         if (response.body()?.drink.isNullOrEmpty()) {
-                            drinkFound = false
                             itemsAdapter.add(getString(R.string.searchNoDrinkFound))
+                            searchListView.adapter = itemsAdapter
+                            searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+                                val intent = Intent(this@SearchableActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            })
 
                         } else {
-                            drinkFound = true
                             val whatsInsideA = response.body()!!
                             for (drinkProperty in whatsInsideA.drink) {
                                 itemsAdapter.add(drinkProperty.strDrink)
                                 drinkProperty.idDrink?.toInt()?.let { arraylist.add(it) }
 
                             }
+                            searchListView.adapter = itemsAdapter
+                            searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+                                val intent = Intent(this@SearchableActivity, DrinkActivity::class.java)
+                                intent.putExtra("DrinkID", arraylist[id.toInt()])
+                                startActivity(intent)
+                                finish()
+                            })
                         }
                     }
 
@@ -66,27 +77,6 @@ class SearchableActivity : AppCompatActivity() {
                     }
                 })
             }
-        }
-        val searchListView = findViewById<ListView>(R.id.searchListView)
-        if (drinkFound) {
-
-            searchListView.adapter = itemsAdapter
-            searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-                val intent = Intent(this, DrinkActivity::class.java)
-                intent.putExtra("DrinkID", arraylist[id.toInt()])
-                startActivity(intent)
-
-            })
-
-        } else {
-            searchListView.adapter = itemsAdapter
-            searchListView.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-                val intent = Intent(this@SearchableActivity, MainActivity::class.java)
-                startActivity(intent)
-
-                finish()
-
-            })
         }
     }
 }
