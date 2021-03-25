@@ -63,14 +63,14 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="vodka"
+                    android:text="@string/vodka"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textIsSelectable="false"
                     android:textSize="10dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -79,13 +79,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="whiskey"
+                    android:text="@string/whiskey"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="10dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -94,13 +94,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="rum"
+                    android:text="@string/rum"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -109,13 +109,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="tequila"
+                    android:text="@string/tequila"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="10dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -129,7 +129,7 @@
                 android:shadowDx="5"
                 android:shadowDy="3"
                 android:shadowRadius="2"
-                android:text="How drunk do you want to get tonight?"
+                android:text="@string/howDrunkQuestion"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -167,7 +167,7 @@
                 android:shadowDx="5"
                 android:shadowDy="3"
                 android:shadowRadius="2"
-                android:text="A little"
+                android:text="@string/aLittleTipsy"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -199,13 +199,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="sweet"
+                    android:text="@string/sweet"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -214,13 +214,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="sour"
+                    android:text="@string/sour"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -230,13 +230,13 @@
                     android:layout_weight="1"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="bitter"
+                    android:text="@string/bitter"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -246,13 +246,13 @@
                     android:layout_weight="1"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="salt"
+                    android:text="@string/salt"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -277,13 +277,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="creamy"
+                    android:text="@string/creamy"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="13dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
 
                 <Button
@@ -292,13 +292,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="fruity"
+                    android:text="@string/fruity"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
                     android:textSize="13dp"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
 
@@ -323,12 +323,12 @@
                     android:layout_weight="1"
                     android:backgroundTint="#8F191818"
                     android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
                     android:insetLeft="2.5dp"
                     android:insetRight="2.5dp"
-                    android:text="generate preference"
+                    android:text="@string/generateDrink"
                     android:textAllCaps="true"
+                    android:textColor="#BFBABA"
+                    android:textStyle="bold"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
 

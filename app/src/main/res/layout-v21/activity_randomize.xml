@@ -105,25 +105,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <Button
-                    android:padding="10dp"
+                    android:id="@+id/newRandom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/newRandom"
-                    android:text="New Drink"
                     android:layout_weight="1"
-                    android:textColor="@color/white"/>
-                <Button
                     android:padding="10dp"
-                    android:layout_marginRight="10dp"
+                    android:text="@string/newDrink"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/homeButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/homeButton"
-                    android:text="Home"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:textColor="@color/white"/>
+                    android:padding="10dp"
+                    android:text="@string/home"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
 

@@ -25,4 +25,18 @@
     <string name="favorites">Favorites</string>
     <string name="allRecords">All the inserted records!</string>
     <string name="preferences">Preferences</string>
+    <string name="vodka">Vodka</string>
+    <string name="whiskey">Whiskey</string>
+    <string name="rum">Rum</string>
+    <string name="tequila">Tequila</string>
+    <string name="howDrunkQuestion">How drunk do you want to get tonight?</string>
+    <string name="sweet">Sweet</string>
+    <string name="sour">Sour</string>
+    <string name="bitter">Bitter</string>
+    <string name="salt">Salt</string>
+    <string name="creamy">Creamy</string>
+    <string name="fruity">Fruity</string>
+    <string name="generateDrink">Generate Drink</string>
+    <string name="home">Home</string>
+    <string name="newDrink">New Drink</string>
 </resources>
