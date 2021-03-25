@@ -88,7 +88,7 @@ class FavItemAdapter(val context: Context, val items: ArrayList<Fav>) :
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        //Jag ger uppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+
         val llMain: LinearLayout = view.findViewById(R.id.llMain)
         val tvName: TextView = view.findViewById(R.id.tvName)
         val ivDelete:ImageView = view.findViewById(R.id.ivDelete)

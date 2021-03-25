@@ -22,7 +22,7 @@
             android:shadowDx="8"
             android:shadowDy="5"
             android:shadowRadius="8"
-            android:text="Preferences"
+            android:text="@string/preferences"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#3BFF0057"

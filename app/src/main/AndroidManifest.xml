@@ -27,7 +27,6 @@
         </activity>
         <activity android:name=".ui.RandomizeActivity" />
         <activity android:name=".ui.DrinkActivity" />
-        <activity android:name=".ui.GenerateActivity" />
         <activity android:name=".ui.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

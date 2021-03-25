@@ -43,7 +43,7 @@ class SearchableActivity : AppCompatActivity() {
                             return
                         }
                         if(response.body()?.drink.isNullOrEmpty()){
-                            itemsAdapter.add("No drink found, did you spell wrong? It might be time for some water!")
+                            itemsAdapter.add(getString(R.string.searchNoDrinkFound))
                         }else{
                             val whatsInsideA = response.body()!!
                             for (drinkProperty in whatsInsideA.drink) {
@@ -54,7 +54,11 @@ class SearchableActivity : AppCompatActivity() {
                         }
                     }
                     override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
-                        Log.d("Failure", "Crash bing boom on failure")
+                        Toast.makeText(
+                                applicationContext,
+                                getString(R.string.APIError),
+                                Toast.LENGTH_LONG
+                        ).show()
                     }
                 })
             }

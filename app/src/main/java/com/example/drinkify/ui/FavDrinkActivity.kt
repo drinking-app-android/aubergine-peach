@@ -64,13 +64,13 @@ class FavDrinkActivity : AppCompatActivity() {
     fun deleteRecordAlertDialog(fav: Fav) {
         val builder = AlertDialog.Builder(this)
         //set title for alert dialog
-        builder.setTitle("Delete Record")
+        builder.setTitle(getString(R.string.deleteRecord))
         //set message for alert dialog
-        builder.setMessage("Are you sure you want to delete ${fav.strDrink}.")
+        builder.setMessage("${getString(R.string.validateDelete)} ${fav.strDrink}.")
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
         //performing positive action
-        builder.setPositiveButton("Yes") { dialogInterface, which ->
+        builder.setPositiveButton(getString(R.string.yes)) { dialogInterface, which ->
 
             //creating the instance of DatabaseHandler class
             val databaseHandler: AppDatabase = AppDatabase(this)
@@ -89,7 +89,7 @@ class FavDrinkActivity : AppCompatActivity() {
             dialogInterface.dismiss() // Dialog will be dismissed
         }
         //performing negative action
-        builder.setNegativeButton("No") { dialogInterface, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialogInterface, which ->
             dialogInterface.dismiss() // Dialog will be dismissed
         }
         // Create the AlertDialog

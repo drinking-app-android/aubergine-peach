@@ -67,19 +67,19 @@ class RandomizeActivity : AppCompatActivity() {
                 for (drinkProperty in whatsInsideA.drink) {
                     var content = ""
                     content += """
-                        Category: ${drinkProperty.strCategory}
+                        ${getString(R.string.category)} ${drinkProperty.strCategory}
                         
                         """.trimIndent()
                     content += """
-                        Type: ${drinkProperty.strAlcoholic}
+                        ${getString(R.string.type)} ${drinkProperty.strAlcoholic}
                         
                         """.trimIndent()
                     content += """
-                        Glass: ${drinkProperty.strGlass}
+                        ${getString(R.string.glass)} ${drinkProperty.strGlass}
                         
                         """.trimIndent()
                     content += """
-                        Instructions: ${drinkProperty.strInstructions}
+                        ${getString(R.string.instructions)} ${drinkProperty.strInstructions}
                         
                         
                         """.trimIndent()
@@ -135,17 +135,17 @@ class RandomizeActivity : AppCompatActivity() {
                     if (favList.contains(Fav(drinkProperty.idDrink, drinkProperty.strDrink))){
                         Log.d("Favorite", "true")
                         favButton.setBackgroundResource(R.drawable.stardrawable)
-                        saveStae(true)
+                        saveState(true)
                     }else{
                         Log.d("Favorite", "false")
                     }
 
                     favButton.setOnClickListener{
-                        var isFavorite = readStae()
+                        var isFavorite = readState()
                         if (isFavorite){
                             favButton.setBackgroundResource(R.drawable.stardrawable_empty)
                             isFavorite = false
-                            saveStae(isFavorite)
+                            saveState(isFavorite)
                         }else{
                             //TODO: Add to the database. It is maybe work yes, kan inte inspektera table dock. Vilket kanske betyder att det inte funkar..
                             favButton.setBackgroundResource(R.drawable.stardrawable)
@@ -156,7 +156,7 @@ class RandomizeActivity : AppCompatActivity() {
                                     )
 
                             } }
-                            saveStae(isFavorite)
+                            saveState(isFavorite)
                         }
                     }
 
@@ -170,7 +170,7 @@ class RandomizeActivity : AppCompatActivity() {
         })
     }
 
-    private fun readStae(): Boolean {
+    private fun readState(): Boolean {
         val aSharedPreferenes = getSharedPreferences(
             "Favourite", Context.MODE_PRIVATE
         )
@@ -178,7 +178,7 @@ class RandomizeActivity : AppCompatActivity() {
 
     }
 
-    private fun saveStae(isFavourite: Boolean) {
+    private fun saveState(isFavourite: Boolean) {
         val aSharedPreferenes = getSharedPreferences(
             "Favourite", Context.MODE_PRIVATE
         )
@@ -194,11 +194,11 @@ class RandomizeActivity : AppCompatActivity() {
             val status =
                     appDatabase.addFavDrink(Fav(theDrinkId, theDrinkName))
             if (status > -1) {
-                Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.recordSaved), Toast.LENGTH_LONG).show()
             }else {
                 Toast.makeText(
                         applicationContext,
-                        "Error oh no uwu fucky wucky senpai",
+                        getString(R.string.favoriteErrorMessage),
                         Toast.LENGTH_LONG
                 ).show()
             }

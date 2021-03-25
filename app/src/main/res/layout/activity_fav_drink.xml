@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="All the inserted records."
+            android:text="@string/allRecords"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="No records available!!!"
+        android:text="@string/noRecords"
         android:textSize="18sp"
         android:visibility="gone"
         tools:visibility="visible" />

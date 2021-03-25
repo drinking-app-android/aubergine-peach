@@ -62,19 +62,19 @@ class DrinkActivity : AppCompatActivity() {
                 for (drinkProperty in whatsInsideA.drink) {
                     var content = ""
                     content += """
-                        Category: ${drinkProperty.strCategory}
+                        ${getString(R.string.category)} ${drinkProperty.strCategory}
                         
                         """.trimIndent()
                     content += """
-                        Type: ${drinkProperty.strAlcoholic}
+                        ${getString(R.string.type)} ${drinkProperty.strAlcoholic}
                         
                         """.trimIndent()
                     content += """
-                        Glass: ${drinkProperty.strGlass}
+                        ${getString(R.string.glass)} ${drinkProperty.strGlass}
                         
                         """.trimIndent()
                     content += """
-                        Instructions: ${drinkProperty.strInstructions}
+                        ${getString(R.string.instructions)} ${drinkProperty.strInstructions}
                         
                         
                         """.trimIndent()
@@ -153,7 +153,7 @@ class DrinkActivity : AppCompatActivity() {
 
 
             override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
-                Log.d("Failure", "Crash bing boom on failure")
+                Log.d("Failure", "API get failed")
             }
         })
     }
@@ -163,11 +163,11 @@ class DrinkActivity : AppCompatActivity() {
             val status =
                     appDatabase.addFavDrink(Fav(theDrinkId, theDrinkName))
             if (status > -1) {
-                Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.recordSaved), Toast.LENGTH_LONG).show()
             }else {
                 Toast.makeText(
                         applicationContext,
-                        "Error oh no uwu fucky wucky senpai",
+                        getString(R.string.favoriteErrorMessage),
                         Toast.LENGTH_LONG
                 ).show()
             }

@@ -126,7 +126,7 @@ class PreferenceActivity : AppCompatActivity() {
             if (userChoices[0] == "" && userChoices[1] == "" && userChoices[2] == "" && userChoices[3] == "" && userChoices[4] == ""){
                 val snackbar = Snackbar.make(
                         findViewById(R.id.prefScrollView),
-                        "You need to atleast one preferences!",
+                        "You need to choose atleast one preferences!",
                         Snackbar.LENGTH_SHORT
                 ).show()
             } else {
@@ -177,7 +177,7 @@ class PreferenceActivity : AppCompatActivity() {
                         val waitTime = 1500
                         val snackbar = Snackbar.make(
                                 findViewById(R.id.prefScrollView),
-                                "No drink found",
+                                getString(R.string.noDrinkFound),
                                 Snackbar.LENGTH_SHORT
                         ).show()
                         doAsync {
@@ -198,24 +198,25 @@ class PreferenceActivity : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (progress > 0 && progress <= 25) {
-                    textView.setText("Super sober")
+                    textView.setText(getString(R.string.superSober))
                     userChoices[3] = "non-alcoholic"
                 } else if (progress > 25 && progress <= 50) {
-                    textView.setText("A little tipsy")
+                    textView.setText(getString(R.string.aLittleTipsy))
                 } else if (progress > 50 && progress <= 75) {
-                    textView.setText("Very tipsy")
+                    textView.setText(getString(R.string.veryTipsy))
                 } else if (progress > 75 && progress <= 100) {
-                    textView.setText("A lot drunk")
+                    textView.setText(getString(R.string.veryDrunk))
                     userChoices[4] = "shot"
                 }
             }
 
+            //These functions are needed to implement seekBar.
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                Toast.makeText(applicationContext, "Start tracking", Toast.LENGTH_SHORT).show()
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                Toast.makeText(applicationContext, "Stop tracking", Toast.LENGTH_SHORT).show()
+
             }
         })
 

@@ -2,4 +2,27 @@
     <string name="app_name">Drinkify</string>
     <string name="search_hint">Search drinks</string>
     <string name="buttonNewRandom">New Drink</string>
+    <string name="category">Category: </string>
+    <string name="type">Type: </string>
+    <string name="glass">Glass: </string>
+    <string name="instructions">Instructions: </string>
+    <string name="deleteRecord">Delete Record</string>
+    <string name="validateDelete">Are you sure you want to delete</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="noDrinkFound">No drink found</string>
+    <string name="superSober">Super sober</string>
+    <string name="aLittleTipsy">A little tipsy</string>
+    <string name="veryTipsy">Very tipsy</string>
+    <string name="veryDrunk">Very drunk</string>
+    <string name="recordSaved">Record saved</string>
+    <string name="favoriteErrorMessage">Failed to save drink to favorites!</string>
+    <string name="searchNoDrinkFound">No drink found, did you spell wrong? It might be time for some water!</string>
+    <string name="APIError">API Error, please try again!</string>
+    <string name="noRecords">No records available!</string>
+    <string name="randomize">Randomize</string>
+    <string name="drinkify">Drinkify</string>
+    <string name="favorites">Favorites</string>
+    <string name="allRecords">All the inserted records!</string>
+    <string name="preferences">Preferences</string>
 </resources>
