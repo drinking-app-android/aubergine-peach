@@ -62,9 +62,8 @@ class RandomizeActivity : AppCompatActivity() {
                     return
                 }
 
-                val whatsInsideA = response.body()!!
-                //Log.d("drinkname", drink.drink[0].strDrink.toString())
-                for (drinkProperty in whatsInsideA.drink) {
+                val drinkHolderResponse = response.body()!!
+                for (drinkProperty in  drinkHolderResponse.drink) {
                     var content = ""
                     content += """
                         ${getString(R.string.category)} ${drinkProperty.strCategory}
@@ -83,7 +82,7 @@ class RandomizeActivity : AppCompatActivity() {
                         
                         
                         """.trimIndent()
-                    var ingredientArray = arrayOf(
+                    val ingredientArray = arrayOf(
                         drinkProperty.strIngredient1,
                         drinkProperty.strIngredient2, drinkProperty.strIngredient3,
                         drinkProperty.strIngredient4, drinkProperty.strIngredient5,
@@ -100,7 +99,7 @@ class RandomizeActivity : AppCompatActivity() {
                         }
                     }
 
-                    var measureArray = arrayOf(
+                    val measureArray = arrayOf(
                         drinkProperty.strMeasure1,
                         drinkProperty.strMeasure2, drinkProperty.strMeasure3,
                         drinkProperty.strMeasure4, drinkProperty.strMeasure5,
@@ -126,18 +125,10 @@ class RandomizeActivity : AppCompatActivity() {
                     textViewResult?.append(content)
 
                     val favButton: ImageButton = findViewById(R.id.favoritesButton)
-                    /*
-                    val databaseHandler: AppDatabase = AppDatabase(this)
-                    //calling the viewFAV method of DatabaseHandler class to read the records
-                    val favList: ArrayList<Fav> = databaseHandler.viewFav()
 
-                     */
                     if (favList.contains(Fav(drinkProperty.idDrink, drinkProperty.strDrink))){
-                        Log.d("Favorite", "true")
                         favButton.setBackgroundResource(R.drawable.stardrawable)
                         saveState(true)
-                    }else{
-                        Log.d("Favorite", "false")
                     }
 
                     favButton.setOnClickListener{
@@ -147,7 +138,6 @@ class RandomizeActivity : AppCompatActivity() {
                             isFavorite = false
                             saveState(isFavorite)
                         }else{
-                            //TODO: Add to the database. It is maybe work yes, kan inte inspektera table dock. Vilket kanske betyder att det inte funkar..
                             favButton.setBackgroundResource(R.drawable.stardrawable)
                             isFavorite = true
                             drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 ->

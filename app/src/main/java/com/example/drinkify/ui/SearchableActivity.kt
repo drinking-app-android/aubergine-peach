@@ -23,7 +23,6 @@ class SearchableActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchable)
         val itemsAdapter: ArrayAdapter<String> = ArrayAdapter<String>(this@SearchableActivity, android.R.layout.simple_list_item_1)
-        //Search
 
         var arraylist = ArrayList<Int>()
         if (Intent.ACTION_SEARCH == intent.action) {
@@ -39,7 +38,7 @@ class SearchableActivity : AppCompatActivity() {
                 searchDrinkByName.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
                     override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
                         if (!response.isSuccessful) {
-                            Log.d("Response errorBody", response.errorBody().toString())
+                            Toast.makeText(applicationContext, getString(R.string.APIError), Toast.LENGTH_LONG).show()
                             return
                         }
                         if(response.body()?.drink.isNullOrEmpty()){
@@ -72,13 +71,6 @@ class SearchableActivity : AppCompatActivity() {
 
         })
 
-                /*
-                searchFunction(query)
-                That function should also display the
-                search results in a listview where the
-                user can click on the results to go to DrinkActivity
-                of that drink!
-                 */
 
     }
 }

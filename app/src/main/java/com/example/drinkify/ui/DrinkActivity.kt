@@ -44,7 +44,6 @@ class DrinkActivity : AppCompatActivity() {
         val favList = databaseHandler.viewFav()
 
         val idDrinkClicked = intent.getIntExtra("DrinkID", 0)
-        Log.d("Extras", idDrinkClicked.toString())
 
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
@@ -55,7 +54,7 @@ class DrinkActivity : AppCompatActivity() {
         searchDrinkById.list(searchURL)?.enqueue(object : Callback<DrinkHolder> {
             override fun onResponse(call: Call<DrinkHolder>, response: Response<DrinkHolder>) {
                 if (!response.isSuccessful) {
-                    Log.d("Response errorBody", response.errorBody().toString())
+                    Toast.makeText(applicationContext, getString(R.string.APIError), Toast.LENGTH_LONG).show()
                     return
                 }
                 val whatsInsideA = response.body()!!
@@ -120,11 +119,8 @@ class DrinkActivity : AppCompatActivity() {
                     )
                     textViewResult?.append(content)
                     if (favList.contains(Fav(idDrinkClicked.toString(), drinkProperty.strDrink))){
-                        Log.d("Favorite", "true")
                         favButton.setBackgroundResource(R.drawable.stardrawable)
                         saveState(true)
-                    }else{
-                        Log.d("Favorite", "false")
                     }
                     favButton.setOnClickListener{
                         var isFavorite = readState()
@@ -153,7 +149,7 @@ class DrinkActivity : AppCompatActivity() {
 
 
             override fun onFailure(call: Call<DrinkHolder>, t: Throwable) {
-                Log.d("Failure", "API get failed")
+                Toast.makeText(applicationContext, getString(R.string.APIError), Toast.LENGTH_LONG).show()
             }
         })
     }

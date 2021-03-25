@@ -22,16 +22,11 @@ class FavDrinkActivity : AppCompatActivity() {
 
     }
     fun getItemsList(): ArrayList<Fav> {
-        //creating the instance of AppDatabase class
         val databaseHandler: AppDatabase = AppDatabase(this)
-        //calling the viewFAV method of DatabaseHandler class to read the records
         val favList: ArrayList<Fav> = databaseHandler.viewFav()
 
         return favList
     }
-    /**
-     * Function is used to show the list on UI of inserted data.
-     */
     private fun setupListOfDataIntoRecyclerView() {
         val rvItemsList : RecyclerView = findViewById(R.id.rvItemsList)
         val tvNoRecordsAvailable : TextView = findViewById(R.id.tvNoRecordsAvailable)
@@ -40,11 +35,8 @@ class FavDrinkActivity : AppCompatActivity() {
             rvItemsList.visibility = View.VISIBLE
             tvNoRecordsAvailable.visibility = View.GONE
 
-            // Set the LayoutManager that this RecyclerView will use.
             rvItemsList.layoutManager = LinearLayoutManager(this)
-            // Adapter class is initialized and list is passed in the param.
             val favItemAdapter = FavItemAdapter(this, getItemsList())
-            // adapter instance is set to the recyclerview to inflate the items.
             rvItemsList.adapter = favItemAdapter
         } else {
 
@@ -58,24 +50,16 @@ class FavDrinkActivity : AppCompatActivity() {
         fav.idDrink?.let { intent.putExtra("DrinkID", it.toInt()) }
         startActivity(intent)
     }
-    /**
-     * Method is used to show the delete alert dialog.
-     */
     fun deleteRecordAlertDialog(fav: Fav) {
         val builder = AlertDialog.Builder(this)
-        //set title for alert dialog
         builder.setTitle(getString(R.string.deleteRecord))
-        //set message for alert dialog
         builder.setMessage("${getString(R.string.validateDelete)} ${fav.strDrink}.")
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-        //performing positive action
         builder.setPositiveButton(getString(R.string.yes)) { dialogInterface, which ->
 
-            //creating the instance of DatabaseHandler class
             val databaseHandler: AppDatabase = AppDatabase(this)
-            //calling the deleteEmployee method of DatabaseHandler class to delete record
-            val status = databaseHandler.deleteEmployee(Fav(fav.idDrink, ""))
+            val status = databaseHandler.deleteFav(Fav(fav.idDrink, ""))
             if (status > -1) {
                 Toast.makeText(
                         applicationContext,
@@ -86,16 +70,16 @@ class FavDrinkActivity : AppCompatActivity() {
                 setupListOfDataIntoRecyclerView()
             }
 
-            dialogInterface.dismiss() // Dialog will be dismissed
+            dialogInterface.dismiss()
         }
-        //performing negative action
+
         builder.setNegativeButton(getString(R.string.no)) { dialogInterface, which ->
-            dialogInterface.dismiss() // Dialog will be dismissed
+            dialogInterface.dismiss()
         }
-        // Create the AlertDialog
+
         val alertDialog: AlertDialog = builder.create()
-        // Set other dialog properties
-        alertDialog.setCancelable(false) // Will not allow user to cancel after clicking on remaining screen area.
-        alertDialog.show()  // show the dialog to UI
+
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 }
