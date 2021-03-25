@@ -50,14 +50,6 @@ class PreferenceActivity : AppCompatActivity() {
 
         val fruityButton = findViewById<Button>(R.id.fruityButton)
 
-        val veganButton = findViewById<Button>(R.id.veganButton)
-        veganButton.setOnClickListener {
-            veganButton.setBackgroundColor(Color.CYAN)
-        }
-        val savePreferenceButton = findViewById<Button>(R.id.savePrefButton)
-        savePreferenceButton.setOnClickListener {
-            TODO("Fixing fundamentals first")
-        }
         vodkaButton.setOnClickListener {
             userChoices[0] = "vodka"
             vodkaButton.setBackgroundColor(Color.CYAN)

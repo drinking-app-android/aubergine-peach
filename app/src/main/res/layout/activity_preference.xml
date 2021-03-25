@@ -12,24 +12,6 @@
         android:layout_height="110dp">
 
 
-        <Button
-            android:id="@+id/favoritePrefButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:backgroundTint="#8F191818"
-            android:fontFamily="@font/roboto"
-            android:text="Favorites"
-            android:textColor="#BFBABA"
-            android:textSize="10dp"
-            android:textStyle="bold"
-            acg:cornerRadius="10dp"
-            acg:iconTint="#7A1E1E1E"
-            acg:layout_constraintEnd_toEndOf="parent"
-            acg:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/preferenceTextView"
             android:layout_width="314dp"
@@ -321,9 +303,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutVegan"
-                android:layout_width="120dp"
-                android:layout_height="46dp"
+                android:id="@+id/linearLayoutGetDrink"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="50dp"
@@ -333,48 +315,6 @@
                 acg:layout_constraintEnd_toEndOf="parent"
                 acg:layout_constraintStart_toStartOf="parent"
                 acg:layout_constraintTop_toBottomOf="@+id/linearLayourTexture">
-
-                <Button
-                    android:id="@+id/veganButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#8F191818"
-                    android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
-                    android:text="vegan"
-                    android:textSize="13dp"
-                    acg:cornerRadius="10dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutGetDrink"
-                android:layout_width="276dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="46dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
-                android:orientation="horizontal"
-                acg:layout_constraintEnd_toEndOf="parent"
-                acg:layout_constraintStart_toStartOf="parent"
-                acg:layout_constraintTop_toBottomOf="@+id/linearLayoutVegan">
-
-                <Button
-                    android:id="@+id/savePrefButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#8F191818"
-                    android:fontFamily="@font/roboto"
-                    android:textColor="#BFBABA"
-                    android:textStyle="bold"
-                    android:insetLeft="2.5dp"
-                    android:insetRight="2.5dp"
-                    android:text="save preference"
-                    acg:cornerRadius="10dp" />
 
                 <Button
                     android:id="@+id/generatePrefButton"
@@ -391,6 +331,8 @@
                     android:textAllCaps="true"
                     acg:cornerRadius="10dp" />
             </LinearLayout>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
