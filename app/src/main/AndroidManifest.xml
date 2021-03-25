@@ -11,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcherdrink_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Drinkify" >
-        <activity android:name=".ui.FavDrinkActivity" >
+        <activity
+            android:name=".ui.FavDrinkActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.PreferenceActivity" />
-        <activity android:name=".ui.SearchableActivity" >
+        <activity
+            android:name=".ui.PreferenceActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.SearchableActivity"
+            android:screenOrientation="portrait">
 
             <!-- This makes mainActivity into an searchable activity! -->
             <intent-filter>
@@ -25,9 +31,15 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".ui.RandomizeActivity" />
-        <activity android:name=".ui.DrinkActivity" />
-        <activity android:name=".ui.MainActivity" >
+        <activity
+            android:name=".ui.RandomizeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.DrinkActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

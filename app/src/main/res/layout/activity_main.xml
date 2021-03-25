@@ -24,10 +24,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="345dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="118sp"
         android:layout_marginTop="80dp"
 
         android:backgroundTint="#E91E63"

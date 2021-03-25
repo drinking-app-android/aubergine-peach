@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Drinkify</string>
+    <string name="search_hint">Sök drinkar</string>
+    <string name="buttonNewRandom">Ny drink</string>
+    <string name="category">Kategori: </string>
+    <string name="type">Typ: </string>
+    <string name="glass">Glas: </string>
+    <string name="instructions">Instructioner: </string>
+    <string name="deleteRecord">Ta bort favorit</string>
+    <string name="validateDelete">Är du säker på att du vil ta bort favorit?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="noDrinkFound">Ingen drink funnen :(</string>
+    <string name="superSober">"Super"nykter</string>
+    <string name="aLittleTipsy">Lite lullig</string>
+    <string name="veryTipsy">Full</string>
+    <string name="veryDrunk">Redlös</string>
+    <string name="recordSaved">Favorit sparad!</string>
+    <string name="favoriteErrorMessage">Något gick fel försöka lägga till drinken.</string>
+    <string name="searchNoDrinkFound">Ingen drink funnen. Stavat fel? Kanske dags för vatten?</string>
+    <string name="APIError">API fel, försök igen senare!</string>
+    <string name="noRecords">Inga favoriter funna!</string>
+    <string name="randomize">Slumpa</string>
+    <string name="drinkify">Drinkify</string>
+    <string name="favorites">Favoriter</string>
+    <string name="allRecords">Alla favoritdrinkar!</string>
+    <string name="preferences">Preferenser</string>
+    <string name="vodka">Vodka</string>
+    <string name="whiskey">Whisky</string>
+    <string name="rum">Rom</string>
+    <string name="tequila">Tequila</string>
+    <string name="howDrunkQuestion">Hur full vill du bli?</string>
+    <string name="sweet">Söt</string>
+    <string name="sour">Sur</string>
+    <string name="bitter">Bitter</string>
+    <string name="salt">Salt</string>
+    <string name="creamy">Krämig</string>
+    <string name="fruity">Fruktig</string>
+    <string name="generateDrink">Generera drink</string>
+    <string name="home">Hem</string>
+    <string name="newDrink">Slumpa en ny</string>
+</resources>

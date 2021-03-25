@@ -38,5 +38,5 @@
     <string name="fruity">Fruity</string>
     <string name="generateDrink">Generate Drink</string>
     <string name="home">Home</string>
-    <string name="newDrink">New Drink</string>
+    <string name="newDrink">New random</string>
 </resources>
