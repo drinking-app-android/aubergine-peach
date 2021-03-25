@@ -18,18 +18,17 @@ class FavDrinkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fav_drink)
         setupListOfDataIntoRecyclerView()
-
-
     }
+
     fun getItemsList(): ArrayList<Fav> {
         val databaseHandler: AppDatabase = AppDatabase(this)
         val favList: ArrayList<Fav> = databaseHandler.viewFav()
-
         return favList
     }
+
     private fun setupListOfDataIntoRecyclerView() {
-        val rvItemsList : RecyclerView = findViewById(R.id.rvItemsList)
-        val tvNoRecordsAvailable : TextView = findViewById(R.id.tvNoRecordsAvailable)
+        val rvItemsList: RecyclerView = findViewById(R.id.rvItemsList)
+        val tvNoRecordsAvailable: TextView = findViewById(R.id.tvNoRecordsAvailable)
         if (getItemsList().size > 0) {
 
             rvItemsList.visibility = View.VISIBLE
@@ -50,6 +49,7 @@ class FavDrinkActivity : AppCompatActivity() {
         fav.idDrink?.let { intent.putExtra("DrinkID", it.toInt()) }
         startActivity(intent)
     }
+
     fun deleteRecordAlertDialog(fav: Fav) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.deleteRecord))

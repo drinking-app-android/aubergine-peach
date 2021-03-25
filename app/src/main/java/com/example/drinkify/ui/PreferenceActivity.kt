@@ -123,7 +123,7 @@ class PreferenceActivity : AppCompatActivity() {
 
         val generateButton = findViewById<Button>(R.id.generatePrefButton)
         generateButton.setOnClickListener {
-            if (userChoices[0] == "" && userChoices[1] == "" && userChoices[2] == "" && userChoices[3] == "" && userChoices[4] == ""){
+            if (userChoices[0] == "" && userChoices[1] == "" && userChoices[2] == "" && userChoices[3] == "" && userChoices[4] == "") {
                 val snackbar = Snackbar.make(
                         findViewById(R.id.prefScrollView),
                         "You need to choose atleast one preferences!",

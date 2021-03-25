@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.GET
 
-data class DrinkHolder (
-    @SerializedName("drinks")
-    val drink: List<Drink>
+data class DrinkHolder(
+        @SerializedName("drinks")
+        val drink: List<Drink>
 )
 
 interface RandomDrinkAPI {
     @get:GET("random.php")
-    val drinks: Call <DrinkHolder>
+    val drinks: Call<DrinkHolder>
 
 }

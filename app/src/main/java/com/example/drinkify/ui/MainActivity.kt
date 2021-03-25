@@ -13,14 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val randomizeActivityButton: Button = findViewById(R.id.randomizeButton)
-        randomizeActivityButton.setOnClickListener{
+        randomizeActivityButton.setOnClickListener {
             val intent = Intent(this, RandomizeActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
         val generateActivityButton: Button = findViewById(R.id.generateButton)
-        generateActivityButton.setOnClickListener{
-         val intent = Intent(this, PreferenceActivity::class.java)
+        generateActivityButton.setOnClickListener {
+            val intent = Intent(this, PreferenceActivity::class.java)
             startActivity(intent)
         }
         val favoritesActivityButton: Button = findViewById(R.id.viewFavDrinks)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val searchButton: Button = findViewById(R.id.searchButton)
-        searchButton.setOnClickListener{
+        searchButton.setOnClickListener {
             onSearchRequested()
         }
 

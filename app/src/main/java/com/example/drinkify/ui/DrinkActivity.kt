@@ -27,13 +27,13 @@ class DrinkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink)
 
-        textViewDrinkName  = findViewById(R.id.drink_name)
-        textViewResult  = findViewById(R.id.text_view_result)
-        textViewIngredients  = findViewById(R.id.ingredients_result)
-        textViewMeasurements  = findViewById(R.id.measurements_result)
+        textViewDrinkName = findViewById(R.id.drink_name)
+        textViewResult = findViewById(R.id.text_view_result)
+        textViewIngredients = findViewById(R.id.ingredients_result)
+        textViewMeasurements = findViewById(R.id.measurements_result)
         val drinkImage: ImageView = findViewById(R.id.drink_image)
         val homeButton: Button = findViewById(R.id.homeButton)
-        homeButton.setOnClickListener{
+        homeButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
@@ -118,28 +118,30 @@ class DrinkActivity : AppCompatActivity() {
                             drinkImage
                     )
                     textViewResult?.append(content)
-                    if (favList.contains(Fav(idDrinkClicked.toString(), drinkProperty.strDrink))){
+                    if (favList.contains(Fav(idDrinkClicked.toString(), drinkProperty.strDrink))) {
                         favButton.setBackgroundResource(R.drawable.stardrawable)
                         saveState(true)
                     }
-                    favButton.setOnClickListener{
+                    favButton.setOnClickListener {
                         var isFavorite = readState()
 
 
-                        if (isFavorite){
+                        if (isFavorite) {
                             favButton.setBackgroundResource(R.drawable.stardrawable_empty)
                             isFavorite = false
                             saveState(isFavorite)
 
-                        }else{
+                        } else {
                             favButton.setBackgroundResource(R.drawable.stardrawable)
                             isFavorite = true
-                            drinkProperty.idDrink?.let { it1 -> drinkProperty.strDrink?.let { it2 ->
-                                addToFavorites(it1,
-                                        it2
-                                )
+                            drinkProperty.idDrink?.let { it1 ->
+                                drinkProperty.strDrink?.let { it2 ->
+                                    addToFavorites(it1,
+                                            it2
+                                    )
 
-                            } }
+                                }
+                            }
                             saveState(isFavorite)
                         }
 
@@ -153,14 +155,15 @@ class DrinkActivity : AppCompatActivity() {
             }
         })
     }
-    fun addToFavorites (theDrinkId: String, theDrinkName: String){
+
+    fun addToFavorites(theDrinkId: String, theDrinkName: String) {
         val appDatabase: AppDatabase = AppDatabase(this)
         if (!theDrinkId.isEmpty() && !theDrinkName.isEmpty()) {
             val status =
                     appDatabase.addFavDrink(Fav(theDrinkId, theDrinkName))
             if (status > -1) {
                 Toast.makeText(applicationContext, getString(R.string.recordSaved), Toast.LENGTH_LONG).show()
-            }else {
+            } else {
                 Toast.makeText(
                         applicationContext,
                         getString(R.string.favoriteErrorMessage),
@@ -177,6 +180,7 @@ class DrinkActivity : AppCompatActivity() {
         return aSharedPreferenes.getBoolean("State", true)
 
     }
+
     private fun saveState(isFavourite: Boolean) {
         val aSharedPreferenes = getSharedPreferences(
                 "Favourite", Context.MODE_PRIVATE

@@ -26,6 +26,7 @@ class FavItemAdapter(val context: Context, val items: ArrayList<Fav>) :
                 )
         )
     }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = items.get(position)
@@ -33,7 +34,7 @@ class FavItemAdapter(val context: Context, val items: ArrayList<Fav>) :
         holder.tvName.text = item.strDrink
 
         holder.tvName.setOnClickListener { view ->
-            if (context is FavDrinkActivity){
+            if (context is FavDrinkActivity) {
                 context.showDrinkClicked(item)
             }
         }
@@ -55,15 +56,17 @@ class FavItemAdapter(val context: Context, val items: ArrayList<Fav>) :
             holder.llMain.setBackgroundColor(ContextCompat.getColor(context, R.color.colorWhite))
         }
     }
+
     override fun getItemCount(): Int {
         return items.size
 
     }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
         val llMain: LinearLayout = view.findViewById(R.id.llMain)
         val tvName: TextView = view.findViewById(R.id.tvName)
-        val ivDelete:ImageView = view.findViewById(R.id.ivDelete)
+        val ivDelete: ImageView = view.findViewById(R.id.ivDelete)
     }
 }
