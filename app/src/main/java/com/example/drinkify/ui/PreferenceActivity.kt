@@ -3,7 +3,6 @@ package com.example.drinkify.ui
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
@@ -11,8 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkify.R
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.delay
-import org.jetbrains.anko.db.NULL
 import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
@@ -126,7 +123,7 @@ class PreferenceActivity : AppCompatActivity() {
             if (userChoices[0] == "" && userChoices[1] == "" && userChoices[2] == "" && userChoices[3] == "" && userChoices[4] == "") {
                 val snackbar = Snackbar.make(
                         findViewById(R.id.prefScrollView),
-                        "You need to choose atleast one preferences!",
+                        getString(R.string),
                         Snackbar.LENGTH_SHORT
                 ).show()
             } else {

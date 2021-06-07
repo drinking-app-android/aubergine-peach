@@ -40,4 +40,5 @@
     <string name="generateDrink">Generera drink</string>
     <string name="home">Hem</string>
     <string name="newDrink">Slumpa en ny</string>
+    <string name="chooseOnePref">Du måste välja åtminstone en preferens!</string>
 </resources>

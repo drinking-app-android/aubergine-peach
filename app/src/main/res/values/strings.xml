@@ -39,4 +39,5 @@
     <string name="generateDrink">Generate Drink</string>
     <string name="home">Home</string>
     <string name="newDrink">New random</string>
+    <string name="chooseOnePref">You need to choose atleast one preference!</string>
 </resources>
