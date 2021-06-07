@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -22,15 +23,19 @@ class RandomizeActivity : AppCompatActivity() {
     private var textViewDrinkName: TextView? = null
     private var textViewIngredients: TextView? = null
     private var textViewMeasurements: TextView? = null
+    private var randomizeSpinner: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_randomize)
+        randomizeSpinner = findViewById(R.id.progressBar2)
+        randomizeSpinner?.visibility = View.VISIBLE
 
         textViewDrinkName = findViewById(R.id.drink_name)
         textViewResult = findViewById(R.id.text_view_result)
         textViewIngredients = findViewById(R.id.ingredients_result)
         textViewMeasurements = findViewById(R.id.measurements_result)
+
 
         val newDrinkButton : Button = findViewById(R.id.newRandom)
         newDrinkButton.setOnClickListener{
@@ -62,6 +67,7 @@ class RandomizeActivity : AppCompatActivity() {
                     return
                 }
 
+                randomizeSpinner?.visibility = View.GONE
                 val drinkHolderResponse = response.body()!!
                 for (drinkProperty in  drinkHolderResponse.drink) {
                     var content = ""

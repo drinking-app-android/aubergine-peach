@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.example.drinkify.R
@@ -22,10 +23,14 @@ class DrinkActivity : AppCompatActivity() {
     private var textViewDrinkName: TextView? = null
     private var textViewIngredients: TextView? = null
     private var textViewMeasurements: TextView? = null
+    private var spinner: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink)
+        spinner = findViewById(R.id.progressBar)
+
+        spinner?.visibility = View.VISIBLE
 
         textViewDrinkName = findViewById(R.id.drink_name)
         textViewResult = findViewById(R.id.text_view_result)
@@ -57,6 +62,8 @@ class DrinkActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, getString(R.string.APIError), Toast.LENGTH_LONG).show()
                     return
                 }
+
+                spinner?.visibility = View.GONE
                 val whatsInsideA = response.body()!!
                 for (drinkProperty in whatsInsideA.drink) {
                     var content = ""

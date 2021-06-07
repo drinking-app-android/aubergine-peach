@@ -10,6 +10,7 @@
     tools:context=".ui.RandomizeActivity">
 
 
+
     <!-- Nested Scroll view -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -120,5 +121,14 @@
 
         </androidx.cardview.widget.CardView>
     </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
 
 </RelativeLayout>
